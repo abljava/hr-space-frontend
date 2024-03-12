@@ -1,8 +1,45 @@
-# React + Vite
+# Описание проекта "HRSpace"
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+HRSpace - это маркетплейс частных рекрутеров и кадровых агентств по подбору сотрудников под ключ.
+Наша цель - разработать новый микросервис билдера заявки поиска рекрутера для улучшения процесса подбора персонала.
 
-Currently, two official plugins are available:
+## Отрасль и направления деятельности
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+HRSpace занимается подбором сотрудников для различных компаний.
+
+## Основные задачи проекта
+
+- Создание прозрачного и удобного билдера заявки для клиентов.
+- Разработка функционала для рекрутеров: отклик на заявки, ведение переписки, направление резюме, регистрация вышедшего сотрудника.
+
+## Функциональные требования
+
+### Дополнительные требования
+
+- Переключение рекрутера между ролями работодателя и рекрутера.
+- Функционал оплаты.
+
+## Технические требования
+
+### Дизайн
+
+- Стилистика должна соответствовать главной странице HRSpace.
+
+### Frontend
+
+Технологии: React с использованием Redux Toolkit и SCSS.
+
+### Backend
+
+Технологии: Django или FastAPI.
+
+- Микросервисная архитектура для оперативного масштабирования.
+
+## Артефакты для сдачи работы
+
+1. MVP сервиса билдера заявки HRSpace.
+2. Схема (структура) работы классов.
+3. UX-дизайн, как его видит команда.
+4. Презентация с отчетом о проделанной работе.
+
+Ссылка на проект: [HRSpace на GitHub](https://github.com/abljava/hr-space-интерфейс)
