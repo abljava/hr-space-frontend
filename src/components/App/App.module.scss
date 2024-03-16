@@ -1,5 +1,16 @@
+.root {
+	max-width: 1440px;
+	min-width: 360px;
+	margin: 0 auto;
+	font-family: Arial;
+
+	color: rgba(48, 50, 51, 1);
+}
+
 .title {
-  font-family: Arial;
-  font-size: 36px;
-  font-weight: 700;
+}
+
+button {
+	cursor: pointer;
+	border: none;
 }

@@ -1,10 +1,11 @@
 import styles from './Main.module.scss';
+import Vacancy from '../Vacancy/Vacancy';
 
 function Main() {
 	return (
-		<>
-			<p className={styles.title}>Main</p>
-		</>
+		<section className={styles.main}>
+			<Vacancy />
+		</section>
 	);
 }
 
