@@ -1,5 +1,6 @@
 .header {
 	display: flex;
+    justify-content: space-between;
 	background-color: #222324;
 	color: #fff;
 	padding-right: 96px;
@@ -11,7 +12,6 @@
 	align-items: center;
 	padding-top: 16px;
 	padding-bottom: 16px;
-	margin-right: 257.5px;
 	max-width: 138px;
 }
 .img_logo {
@@ -26,7 +26,6 @@
 	justify-content: space-between;
 	padding-top: 26.5px;
 	padding-bottom: 27.5px;
-	margin-right: 171.5px;
 	width: 457px;
 }
 .list {

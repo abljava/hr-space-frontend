@@ -1,16 +1,14 @@
-//import { useSelector } from 'react-redux';
 import styles from './Header.module.scss';
 import hhlogo from '../../assets/image/hhlogo.svg';
-import Caption from '../../assets/image/Caption.svg';
+import сaption from '../../assets/image/сaption.svg';
 import bell from '../../assets/image/bell.svg';
 import ava_vk from '../../assets/image/ava_vk.svg';
 function Header() {
-	// Можно использовать Redux для получения данных о текущем пользователе, но мы тут мокаем
 	return (
 		<header className={styles.header}>
 			<div className={styles.logo}>
 				<img src={hhlogo} className={styles.img_logo} alt="Логотип" />
-				<img src={Caption} className={styles.img_company} alt="Название компании" />
+				<img src={сaption} className={styles.img_company} alt="Название компании" />
 			</div>
 			<nav className={styles.menu}>
 				<ul className={styles.list}>
