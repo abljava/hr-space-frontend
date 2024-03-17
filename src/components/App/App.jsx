@@ -7,9 +7,9 @@ import styles from './App.module.scss';
 function App() {
 	return (
 		<div className={styles.root}>
-			<Header/>
+			<Header />
 			<Routes>
-				<Route path='/' element={<Main/>} />
+				<Route path="/" element={<Main />} />
 			</Routes>
 		</div>
 	);
