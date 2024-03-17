@@ -3,15 +3,12 @@
 	justify-content: space-between;
 	background-color: #222324;
 	color: #fff;
-	padding-right: 96px;
-	padding-left: 96px;
+	padding: 16px 96px;
 	margin: 0 auto;
 }
 .logo {
 	display: flex;
 	align-items: center;
-	padding-top: 16px;
-	padding-bottom: 16px;
 	max-width: 138px;
 }
 .img_logo {
@@ -24,12 +21,13 @@
 .menu {
 	display: flex;
 	justify-content: space-between;
-	padding-top: 26.5px;
-	padding-bottom: 27.5px;
-	width: 457px;
+	align-items: center;
+	margin-left: 85px;
 }
 .list {
 	list-style-type: none;
+	margin: 0;
+	padding: 0;
 	display: flex;
 }
 .item {
