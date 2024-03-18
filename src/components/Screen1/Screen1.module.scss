@@ -1,4 +1,5 @@
 .container {
+	margin: 44px 0 178px;
 }
 
 .heading {
@@ -15,7 +16,6 @@
 }
 
 .form_container {
-	margin-bottom: 177px;
 }
 
 .title {
@@ -36,6 +36,7 @@
 .input_container {
 	display: flex;
 	align-items: center;
+	position: relative;
 	margin-bottom: 32px;
 	&:last-of-type {
 		margin-bottom: 0;
@@ -71,6 +72,15 @@
 
 .input_large {
 	width: 614px;
+}
+
+.error {
+	margin: 0;
+	padding: 0;
+	padding-left: 6px;
+	position: absolute;
+	font-size: 12px;
+	color: rgb(245, 52, 68);
 }
 
 .button {
