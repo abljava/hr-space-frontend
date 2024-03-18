@@ -2,28 +2,12 @@
 	max-width: 1440px;
 	min-width: 360px;
 	margin: 0 auto;
-	font-family: Arial;
+	font-family: Arial, sans-serif;
 
 	color: rgba(48, 50, 51, 1);
-}
-
-.title {
 }
 
 button {
 	cursor: pointer;
 	border: none;
-}
-
-.root {
-	margin: 0 auto;
-	min-height: 100vh;
-	width: 100%;
-	font-family: Arial, sans-serif;
-	color: #000;
-	background-color: #fff;
-	font-style: normal;
-	font-weight: 400;
-	font-size: 16px;
-	line-height: 24px;
 }

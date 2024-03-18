@@ -1,8 +1,8 @@
 import styles from './Header.module.scss';
-import hhlogo from '../../assets/image/hhlogo.svg';
-import сaption from '../../assets/image/сaption.svg';
-import bell from '../../assets/image/bell.svg';
-import ava_vk from '../../assets/image/ava_vk.svg';
+import hhlogo from '../../assets/images/hhlogo.svg';
+import сaption from '../../assets/images/сaption.svg';
+import bell from '../../assets/images/bell.svg';
+import ava_vk from '../../assets/images/ava_vk.svg';
 function Header() {
 	return (
 		<header className={styles.header}>

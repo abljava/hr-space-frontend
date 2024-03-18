@@ -1,5 +1,5 @@
 import styles from './Main.module.scss';
-import Vacancy from '../Vacancy/Vacancy';
+import Vacancy from '../ScreenOne/ScreenOne';
 
 function Main() {
 	return (
