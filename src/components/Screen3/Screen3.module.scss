@@ -1,0 +1,183 @@
+.container {
+	margin: 44px 0 178px;
+}
+
+.heading {
+	font-size: 32px;
+	line-height: 37.12px;
+	margin: 0 0 28px;
+}
+
+.progress_bar {
+	width: 388px;
+	height: 8px;
+	background-color: rgba(185, 209, 255, 1);
+	margin-bottom: 80px;
+}
+
+.form_container {
+}
+
+.title {
+	font-size: 24px;
+	line-height: 27.84px;
+	margin-bottom: 44px;
+}
+
+.input_list {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	display: flex;
+	flex-direction: column;
+	margin-bottom: 80px;
+}
+
+.input_container {
+	display: flex;
+	// align-items: center;
+	position: relative;
+	margin-bottom: 32px;
+	&:last-of-type {
+		margin-bottom: 0;
+		& .input_item:last-of-type {
+			margin-left: 19px;
+		}
+	}
+}
+
+.fieldbox {
+	display: flex;
+	gap: 19px;
+}
+
+.input_label {
+	width: 314px;
+	height: 48px;
+	display: flex;
+	align-items: center;
+	font-size: 16px;
+}
+
+.input_label_top {
+	align-items: flex-start;
+}
+
+.input_item {
+	width: 298px;
+	height: 48px;
+	display: block;
+
+	padding: 14px 16px;
+	box-sizing: border-box;
+	border-radius: 8px;
+	border: 1px solid rgba(186, 189, 191, 1);
+
+	&:focus {
+		border: none;
+		outline: 2px solid rgba(23, 133, 229, 1);
+		overflow-wrap: break-word;
+	}
+}
+
+.input{
+	position: relative;
+
+}
+
+.input::before {
+	position: absolute;
+	right: 10px;
+	top: 12px;
+
+	content: '';
+	width: 14px;
+	height: 23px;
+	background-image: url(../../assets/images/currency.svg);
+	background-repeat: no-repeat;
+	background-position: center;
+
+}
+
+.input_small {
+	display: block;
+	width: 160px;
+}
+
+// .input_small::before {
+// 	display: block;
+// 	content: '';
+// 	width: 14px;
+// 	height: 23px;
+// 	background: red;
+// }
+
+.checkbox_container {
+	display: flex;
+	margin-bottom: 12px;
+	&:last-of-type {
+		margin-bottom: 0;
+	}
+}
+
+.checkbox {
+	width: 20px;
+	height: 20px;
+	border: 0;
+	border-radius: 4px;
+	border: 1px solid rgba(186, 189, 191, 1);
+	-webkit-appearance: none;
+	appearance: none;
+	background-color: transparent;
+	padding: 0;
+	cursor: pointer;
+	transition: 0.3s opacity;
+	place-content: center;
+	display: grid;
+	&:focus {
+		outline: none;
+	}
+	&:checked::before {
+		content: '';
+		width: 20px;
+		height: 20px;
+		border-radius: 4px;
+		border: none;
+		background-color: rgba(0, 112, 255, 1);
+		background-image: url('../../assets/images/checkbox-icon.svg');
+		background-repeat: no-repeat;
+		background-position: center;
+	}
+}
+
+.description {
+	margin: 0 0 0 12px;
+}
+
+.error {
+	margin: 0;
+	padding: 3px 0 0 6px;
+	position: absolute;
+	font-size: 12px;
+	color: rgb(245, 52, 68);
+}
+
+.button_container {
+	margin-left: 314px;
+	display: flex;
+	gap: 20px;
+}
+
+.button {
+	width: 119px;
+	height: 48px;
+	// margin-left: 314px;
+	padding: 12px 36px;
+	background-color: rgba(235, 235, 235, 1);
+	border-radius: 8px;
+}
+
+.button_back {
+	background-color: transparent;
+	color: rgba(23, 133, 229, 1);
+}
