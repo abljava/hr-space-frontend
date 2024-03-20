@@ -106,7 +106,7 @@ function Screen1({ onChange }) {
 							<label htmlFor="relocate" className={styles.input_label}>
 								Возможность релокации
 							</label>
-							<Switcher />
+							<Switcher id="relocate" />
 						</li>
 						<li className={styles.input_container}>
 							<label htmlFor="remote" className={styles.input_label}>
