@@ -1,7 +1,6 @@
 import styles from './Switcher.module.scss';
 
 function Switcher({ id }) {
-	// const checkbox = document.getElementById({id})
 	// console.log('checkbox:', checkbox);
 
 	return (
