@@ -1,23 +1,19 @@
-// import { useState } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useForm, FormProvider } from 'react-hook-form';
+import { useForm, FormProvider, Controller } from 'react-hook-form';
 import cn from 'classnames';
 
 import Switcher from '../Switcher/Switcher';
-
+import Dropdown from '../Dropdown/Dropdown';
 import styles from './Screen1.module.scss';
+import { CITIES, PROFESSIONS } from '../../utils/constants';
 
 function Screen1({ onChange }) {
-	// const [values, setValues] = useState({});
-	const methods = useForm({ mode: 'onBlur' });
 	const navigate = useNavigate();
+	const [isActive, setIsActive] = useState(false);
+	const [selected, setSelected] = useState('');
 
-	// const {
-	// 	methods.register,
-	// 	handleSubmit,
-	// 	watch,
-	// 	formState: { methods.errors },
-	// } = useForm({ mode: 'onBlur' });
+	const methods = useForm({ mode: 'onBlur' });
 
 	const watchInputs = methods.watch();
 	const inputLarge = cn(styles.input_item, styles.input_large);
@@ -28,8 +24,12 @@ function Screen1({ onChange }) {
 
 	const handleClick = () => {
 		onChange(watchInputs);
-		navigate('/2');
-		// console.log('watchInputs:', watchInputs);
+		// navigate('/2');
+	};
+
+	const handleDropdownClick = () => {
+		console.log('click prof');
+		setIsActive(!isActive);
 	};
 
 	return (
@@ -58,8 +58,10 @@ function Screen1({ onChange }) {
 									className={inputLarge}
 									placeholder=""
 								/>
-								{methods.errors?.vacancy && (
-									<p className={styles.error}>{methods.errors?.vacancy?.message || 'error'}</p>
+								{methods.formState.errors?.vacancy && (
+									<p className={styles.error}>
+										{methods.formState.errors?.vacancy?.message || 'error'}
+									</p>
 								)}
 							</div>
 						</li>
@@ -68,19 +70,43 @@ function Screen1({ onChange }) {
 								Профессия *
 							</label>
 							<div>
-								<input
-									{...methods.register('profession', {
-										required: 'Обязательное поле',
-									})}
-									type="text"
-									id="profession"
-									className={styles.input_item}
-									placeholder=""
+								<div className={styles.input}>
+									<input
+										{...methods.register('profession', {
+											required: 'Обязательное поле',
+										})}
+										type="text"
+										id="profession"
+										className={styles.input_item}
+										placeholder=""
+										// value={selected}
+									/>
+									{methods.formState.errors?.profession && (
+										<p className={styles.error}>
+											{methods.formState.errors?.profession?.message || 'error'}
+										</p>
+									)}
+									<button className={styles.button_modal} onClick={handleDropdownClick} />
+								</div>
+								<Controller
+									control={methods.control}
+									name="dropdown"
+									render={({ field: { onChange, onBlur, value, name }, fieldState: { error } }) => (
+										<Dropdown
+											onChange={onChange}
+											name={name}
+											value={value}
+											setSelected={setSelected}
+											setIsActive={setIsActive}
+											selected={selected}
+										/>
+									)}
 								/>
-								{methods.errors?.profession && (
-									<p className={styles.error}>{methods.errors?.profession?.message || 'error'}</p>
-								)}
 							</div>
+
+							{/* {isActive && (
+								<Dropdown selected={selected} setSelected={setSelected} setIsActive={setIsActive} />
+							)} */}
 						</li>
 						<li className={styles.input_container}>
 							<label htmlFor="city" className={styles.input_label}>
@@ -97,8 +123,10 @@ function Screen1({ onChange }) {
 									className={styles.input_item}
 									placeholder=""
 								/>
-								{methods.errors?.city && (
-									<p className={styles.error}>{methods.errors?.city?.message || 'error'}</p>
+								{methods.formState.errors?.city && (
+									<p className={styles.error}>
+										{methods.formState.errors?.city?.message || 'error'}
+									</p>
 								)}
 							</div>
 						</li>

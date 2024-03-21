@@ -8,6 +8,9 @@ function Checkbox({ name, text }) {
 		formState: { errors },
 	} = useFormContext();
 
+	const error = errors[name]?.message || '';
+	// console.log('error:', error);
+
 	return (
 		<div className={styles.checkbox_container}>
 			<input type="checkbox" {...register(name)} className={styles.checkbox} />

@@ -76,3 +76,76 @@ export const CONTRACT = [
 		text: 'Договор с физлицом',
 	},
 ];
+
+export const CITIES = [
+	{
+		id: '1',
+		name: 'moscow',
+		text: 'Москва',
+		metro: [
+			{
+				id: '1',
+				name: 'kurskaya',
+				text: 'Курская',
+			},
+			{
+				id: '2',
+				name: 'kuntsevskaya',
+				text: 'Кунцевская',
+			},
+		],
+	},
+	{
+		id: '2',
+		name: 'moscowski',
+		text: 'Московский',
+	},
+	{
+		id: '3',
+		name: 'podolski_moskowskaya_obl',
+		text: 'Подольск (Московская область)',
+	},
+	{
+		id: '4',
+		name: 'viborg',
+		text: 'Выборг',
+	},
+	{
+		id: '5',
+		name: 'vishni_volochok',
+		text: 'Вышний Волочок',
+	},
+	{
+		id: '6',
+		name: 'samara',
+		text: 'Самара',
+	},
+	{
+		id: '7',
+		name: 'saint_petersburg',
+		text: 'Санкт-Петербург',
+	},
+	{
+		id: '8',
+		name: 'saratov',
+		text: 'Саратов',
+	},
+];
+
+export const PROFESSIONS = [
+	{
+		id: '1',
+		name: 'doctor',
+		text: 'Врач',
+	},
+	{
+		id: '2',
+		name: 'programmer',
+		text: 'Программист',
+	},
+	{
+		id: '3',
+		name: 'specialist',
+		text: 'Специалист',
+	},
+];

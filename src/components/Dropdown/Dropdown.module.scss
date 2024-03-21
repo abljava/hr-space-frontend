@@ -1,0 +1,22 @@
+.dropdown {
+	width: 297px;
+	border-radius: 8px;
+	border: 1px solid rgba(186, 189, 191, 1);
+	font-size: 14px;
+	line-height: 19.6px;
+}
+
+.list {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.list_item {
+	padding: 12px 16px;
+
+  &:hover {
+    background-color: rgba(0, 112, 255, 1);
+    color: rgba(255, 255, 255, 1);
+  }
+}
