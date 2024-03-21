@@ -54,6 +54,10 @@
 	font-size: 16px;
 }
 
+.input {
+	position: relative;
+}
+
 .input_item {
 	width: 298px;
 	height: 48px;
@@ -90,4 +94,16 @@
 	padding: 12px 36px;
 	background-color: rgba(235, 235, 235, 1);
 	border-radius: 8px;
+}
+
+.button_modal {
+	width: 24px;
+	height: 24px;
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	right: 15px;
+	background-image: url(../../assets/images/dropdown-down.svg);
+	background-position: center;
+	background-repeat: no-repeat;
 }
