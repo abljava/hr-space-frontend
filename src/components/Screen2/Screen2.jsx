@@ -13,6 +13,7 @@ function Screen2({ onChange }) {
 	const [selectedSkills, setSelectedSkills] = useState([]); // Состояние для выбранных навыков
 
 	const buttonBack = cn(styles.button, styles.button_back);
+	const buttonDisabled = cn(styles.button, styles.button_disabled);
 
 	//const {
 	//register,
@@ -23,10 +24,7 @@ function Screen2({ onChange }) {
 
 	//const watchInputs = watch();
 
-	const inputLarge = cn(styles.input_item, styles.input_large);
 	const watchInputs = methods.watch();
-	const inputSmall = cn(styles.input_item, styles.input_small);
-	const labelTop = cn(styles.input_label, styles.input_label_top);
 	//const buttonBack = cn(styles.button, styles.button_back);
 
 	const onSubmit = dataSubmit => {
@@ -133,7 +131,11 @@ function Screen2({ onChange }) {
 								<button className={buttonBack} onClick={() => navigate('/')}>
 									Назад
 								</button>
-								<button className={styles.button} onClick={handleClick}>
+								<button
+									disabled={!methods.formState.isValid}
+									className={!methods.formState.isValid ? styles.button : buttonDisabled}
+									onClick={handleClick}
+								>
 									Далее
 								</button>
 							</>

@@ -14,9 +14,13 @@ function Screen1({ onChange }) {
 	const [selected, setSelected] = useState('');
 
 	const methods = useForm({ mode: 'onBlur' });
+	const { handleSubmit, reset, setValue, control } = useForm({ mode: 'onBlur' });
 
 	const watchInputs = methods.watch();
 	const inputLarge = cn(styles.input_item, styles.input_large);
+	const labelDisabled = cn(styles.input_label, styles.label_disabled);
+	const inputDisabled = cn(styles.input_item, styles.input_disabled);
+	const buttonDisabled = cn(styles.button, styles.button_disabled);
 
 	const onSubmit = dataSubmit => {
 		console.log('dataSubmit', dataSubmit);
@@ -24,13 +28,15 @@ function Screen1({ onChange }) {
 
 	const handleClick = () => {
 		onChange(watchInputs);
-		// navigate('/2');
+		navigate('/2');
 	};
 
 	const handleDropdownClick = () => {
 		console.log('click prof');
 		setIsActive(!isActive);
 	};
+
+	console.log('isValid:', methods.formState.isValid);
 
 	return (
 		<section className={styles.container}>
@@ -130,6 +136,7 @@ function Screen1({ onChange }) {
 								)}
 							</div>
 						</li>
+
 						<li className={styles.input_container}>
 							<label htmlFor="relocate" className={styles.input_label}>
 								Возможность релокации
@@ -144,26 +151,36 @@ function Screen1({ onChange }) {
 						</li>
 
 						<li className={styles.input_container}>
-							<label htmlFor="timezone" className={styles.input_label}>
+							<label
+								htmlFor="timezone"
+								className={watchInputs.remote ? styles.input_label : labelDisabled}
+							>
 								Часовые пояса
 							</label>
 							<input
 								{...methods.register('timezone_start')}
 								type="text"
 								id="timezone"
-								className={styles.input_item}
+								className={watchInputs.remote ? styles.input_item : inputDisabled}
+								// className={styles.input_item}
 								placeholder=""
+								disabled={!watchInputs.remote}
 							/>
 							<input
 								{...methods.register('timezone_end')}
 								type="text"
 								id="timezone"
-								className={styles.input_item}
+								className={watchInputs.remote ? styles.input_item : inputDisabled}
 								placeholder=""
+								disabled={!watchInputs.remote}
 							/>
 						</li>
 					</ul>
-					<button className={styles.button} onClick={handleClick}>
+					<button
+						disabled={!methods.formState.isValid}
+						className={!methods.formState.isValid ? styles.button : buttonDisabled}
+						onClick={handleClick}
+					>
 						Далее
 					</button>
 				</form>

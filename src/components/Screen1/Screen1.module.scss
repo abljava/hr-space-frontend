@@ -1,5 +1,6 @@
 .container {
-	margin: 44px 0 178px;
+	margin: 44px auto 178px;
+	padding: 0 96px;
 }
 
 .heading {
@@ -53,6 +54,9 @@
 	align-items: center;
 	font-size: 16px;
 }
+.label_disabled {
+	color: rgba(149, 151, 153, 1);
+}
 
 .input {
 	position: relative;
@@ -72,6 +76,11 @@
 		outline: 2px solid rgba(23, 133, 229, 1);
 		overflow-wrap: break-word;
 	}
+}
+
+.input_disabled {
+	border: 1px solid rgba(212, 215, 217, 1);
+	background-color: rgba(255, 255, 255, 1);
 }
 
 .input_large {
@@ -94,6 +103,11 @@
 	padding: 12px 36px;
 	background-color: rgba(235, 235, 235, 1);
 	border-radius: 8px;
+}
+
+.button_disabled {
+	color: rgba(255, 255, 255, 1);
+	background-color: rgba(23, 133, 229, 1);
 }
 
 .button_modal {

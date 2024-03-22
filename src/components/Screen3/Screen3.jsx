@@ -24,6 +24,7 @@ function Screen3({ onChange }) {
 	const inputSmall = cn(styles.input_item, styles.input_small);
 	const labelTop = cn(styles.input_label, styles.input_label_top);
 	const buttonBack = cn(styles.button, styles.button_back);
+	const buttonDisabled = cn(styles.button, styles.button_disabled);
 
 	const onSubmit = dataSubmit => {
 		console.log('dataSubmit', dataSubmit);
@@ -118,7 +119,11 @@ function Screen3({ onChange }) {
 							<button className={buttonBack} onClick={() => navigate('/2')}>
 								Назад
 							</button>
-							<button className={styles.button} onClick={handleClick}>
+							<button
+								disabled={!methods.formState.isValid}
+								className={!methods.formState.isValid ? styles.button : buttonDisabled}
+								onClick={handleClick}
+							>
 								Далее
 							</button>
 						</>

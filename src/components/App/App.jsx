@@ -24,7 +24,6 @@ function App() {
 	return (
 		<div className={styles.root}>
 			<Header />
-			<form></form>
 			<Routes>
 				<Route exact path="/" element={<Screen1 data={data} onChange={changeData} />} />
 				<Route path="/2" element={<Screen2 data={data} onChange={changeData} />} />
