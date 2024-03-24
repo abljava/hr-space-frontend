@@ -5,6 +5,7 @@ import styles from './Checkbox.module.scss';
 function Checkbox({ name, text }) {
 	const {
 		register,
+		watch,
 		formState: { errors },
 	} = useFormContext();
 

@@ -1,6 +1,8 @@
 import { useNavigate } from 'react-router-dom';
-import { useForm, FormProvider } from 'react-hook-form';
+import { useForm, FormProvider, Controller } from 'react-hook-form';
 import cn from 'classnames';
+import { useSelector, useDispatch } from 'react-redux';
+import { setData } from '../../slices/formSlice/formSlice';
 
 // import Switcher from '../Switcher/Switcher';
 import { CONTRACT, CONDITIONS, SCHEDULE } from '../../utils/constants';
@@ -8,17 +10,29 @@ import { CONTRACT, CONDITIONS, SCHEDULE } from '../../utils/constants';
 import styles from './Screen3.module.scss';
 import Checkbox from '../Checkbox/Checkbox';
 
-function Screen3({ onChange }) {
+function Screen3() {
 	const navigate = useNavigate();
 
-	const methods = useForm({ mode: 'onBlur' });
+	const form = useSelector(state => state.form.form);
+	const dispatch = useDispatch();
 
-	// const {
-	// 	register,
-	// 	handleSubmit,
-	// 	watch,
-	// 	formState: { errors },
-	// } = useForm({ mode: 'onBlur' });
+	const methods = useForm({
+		mode: 'onBlur',
+		defaultValues: {
+			vacancy: '',
+			city: '',
+			profession: '',
+			relocate: false,
+			remote: false,
+			timezone_start: '',
+			timezone_end: '',
+		},
+	});
+
+	const {
+		control,
+		formState: { errors },
+	} = useForm({ mode: 'onBlur' });
 
 	const watchInputs = methods.watch();
 	const inputSmall = cn(styles.input_item, styles.input_small);
@@ -31,10 +45,19 @@ function Screen3({ onChange }) {
 	};
 
 	const handleClick = () => {
-		onChange(watchInputs);
-		// navigate('/');
-		// console.log('watchInputs:', watchInputs);
+		dispatch(setData(watchInputs));
+		navigate('/');
 	};
+
+	// const isChecked = (array) => {
+	// 	 const res = array.map(item => methods.watch(item))
+	// 	 return res
+
+	// }
+
+	// console.log(isChecked(CONDITIONS));
+
+	console.log('watchInputs:', watchInputs);
 
 	return (
 		<section className={styles.container}>
@@ -83,6 +106,31 @@ function Screen3({ onChange }) {
 								</div>
 							</div>
 						</li>
+
+						{/* -------------------------------------------------- */}
+						{/* <li className={styles.input_container}>
+							<label htmlFor="checkbox" className={labelTop}>
+								Занятость *
+							</label>
+							<div>
+								<Controller
+									control={methods.control}
+									name="checkboxes"
+									render={({ field }) => (
+										<ul>
+											{CONDITIONS.map(({ id, name, text }, index) => (
+												<li key={id}>
+													<input type="checkbox" name={name} id={id} {...field} required />
+													<p>{text}</p>
+												</li>
+											))}
+										</ul>
+									)}
+								/>
+							</div>
+						</li> */}
+						{/* -------------------------------------------------- */}
+
 						<li className={styles.input_container}>
 							<label htmlFor="checkbox" className={labelTop}>
 								Занятость *

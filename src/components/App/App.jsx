@@ -1,5 +1,6 @@
 import { useState, useCallback } from 'react';
 import { Routes, Route } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 import Header from '../Header/Header';
 import Screen1 from '../Screen1/Screen1';
 import Screen2 from '../Screen2/Screen2';
@@ -9,8 +10,10 @@ import styles from './App.module.scss';
 
 function App() {
 	const [data, setData] = useState({});
+	// console.log('data app:', data);
 
-	console.log('data app:', data);
+	const form = useSelector(state => state.form.form);
+	console.log('form:', form);
 
 	const changeData = useCallback(value => {
 		setData(previousInfo => {
@@ -25,7 +28,7 @@ function App() {
 		<div className={styles.root}>
 			<Header />
 			<Routes>
-				<Route exact path="/" element={<Screen1 data={data} onChange={changeData} />} />
+				<Route exact path="/" element={<Screen1 />} />
 				<Route path="/2" element={<Screen2 data={data} onChange={changeData} />} />
 				<Route path="/3" element={<Screen3 data={data} onChange={changeData} />} />
 			</Routes>

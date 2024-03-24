@@ -1,28 +1,37 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
 import { useForm, FormProvider } from 'react-hook-form';
 import cn from 'classnames';
 import styles from './Screen2.module.scss';
-import close from '../../assets/images/close.svg';
+import { setData } from '../../slices/formSlice/formSlice';
 import { workExperience, educationOptions, doctorSkills } from '../../utils/constants';
+
 import Checkbox from '../Checkbox/Checkbox';
-function Screen2({ onChange }) {
+
+function Screen2() {
+	// Состояние для выбранных навыков
+	const [selectedSkills, setSelectedSkills] = useState([]);
 	const navigate = useNavigate();
 
-	const methods = useForm({ mode: 'onBlur' });
-	const [selectedSkills, setSelectedSkills] = useState([]); // Состояние для выбранных навыков
+	const form = useSelector(state => state.form.form);
+	const dispatch = useDispatch();
+
+	const methods = useForm({
+		mode: 'onBlur',
+		defaultValues: {
+			vacancy: '',
+			city: '',
+			profession: '',
+			relocate: false,
+			remote: false,
+			timezone_start: '',
+			timezone_end: '',
+		},
+	});
 
 	const buttonBack = cn(styles.button, styles.button_back);
 	const buttonDisabled = cn(styles.button, styles.button_disabled);
-
-	//const {
-	//register,
-	//handleSubmit,
-	//	watch,
-	//formState: { errors },
-	//} = useForm({ mode: 'onBlur' });
-
-	//const watchInputs = watch();
 
 	const watchInputs = methods.watch();
 	//const buttonBack = cn(styles.button, styles.button_back);
@@ -32,9 +41,10 @@ function Screen2({ onChange }) {
 	};
 
 	const handleClick = () => {
+		dispatch(setData(watchInputs));
 		navigate('/3');
-		onChange(watchInputs);
 	};
+
 	const handleSkillSelect = skill => {
 		// Проверяем, был ли навык выбран
 		const isSkillSelected = selectedSkills.includes(skill);

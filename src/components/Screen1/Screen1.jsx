@@ -1,22 +1,52 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 import { useForm, FormProvider, Controller } from 'react-hook-form';
 import cn from 'classnames';
+import { setData } from '../../slices/formSlice/formSlice';
 
 import Switcher from '../Switcher/Switcher';
 import Dropdown from '../Dropdown/Dropdown';
 import styles from './Screen1.module.scss';
 import { CITIES, PROFESSIONS } from '../../utils/constants';
 
-function Screen1({ onChange }) {
+function Screen1() {
 	const navigate = useNavigate();
 	const [isActive, setIsActive] = useState(false);
 	const [selected, setSelected] = useState('');
 
-	const methods = useForm({ mode: 'onBlur' });
-	const { handleSubmit, reset, setValue, control } = useForm({ mode: 'onBlur' });
+	const form = useSelector(state => state.form.form);
+	const dispatch = useDispatch();
+
+	const methods = useForm({
+		mode: 'onBlur',
+		defaultValues: {
+			vacancy: '',
+			city: '',
+			profession: '',
+			relocate: false,
+			remote: false,
+			timezone_start: '',
+			timezone_end: '',
+		},
+	});
+
+	// const { handleSubmit, reset, setValue, control } = useForm({
+	// 	mode: 'onBlur',
+	// 	defaultValues: {
+	// 		vacancy: '',
+	// 		city: {},
+	// 		profession: '',
+	// 		relocate: 'false',
+	// 		remote: 'false',
+	// 		timezone_start: '',
+	// 		timezone_end: '',
+	// 	},
+	// });
 
 	const watchInputs = methods.watch();
+	console.log('watchInputs:', watchInputs);
+
 	const inputLarge = cn(styles.input_item, styles.input_large);
 	const labelDisabled = cn(styles.input_label, styles.label_disabled);
 	const inputDisabled = cn(styles.input_item, styles.input_disabled);
@@ -27,7 +57,8 @@ function Screen1({ onChange }) {
 	};
 
 	const handleClick = () => {
-		onChange(watchInputs);
+		dispatch(setData(watchInputs));
+
 		navigate('/2');
 	};
 
@@ -35,8 +66,6 @@ function Screen1({ onChange }) {
 		console.log('click prof');
 		setIsActive(!isActive);
 	};
-
-	console.log('isValid:', methods.formState.isValid);
 
 	return (
 		<section className={styles.container}>
