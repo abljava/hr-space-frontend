@@ -31,7 +31,7 @@ function Screen3({ onChange }) {
 
 	const handleClick = () => {
 		onChange(watchInputs);
-		// navigate('/');
+		navigate('/4');
 		// console.log('watchInputs:', watchInputs);
 	};
 

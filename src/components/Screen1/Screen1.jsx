@@ -24,7 +24,7 @@ function Screen1({ onChange }) {
 
 	const handleClick = () => {
 		onChange(watchInputs);
-		// navigate('/2');
+		navigate('/2');
 	};
 
 	const handleDropdownClick = () => {

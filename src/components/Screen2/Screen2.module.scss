@@ -1,9 +1,11 @@
-/* можно вынести в global.scss начало*/
 .container {
 	margin: 44px 0 178px;
 }
 
 .heading {
+	font-family: Inter;
+	font-weight: 700;
+	text-align: left;
 	font-size: 32px;
 	line-height: 37.12px;
 	margin: 0 0 28px;
@@ -37,21 +39,21 @@
 
 .input_container {
 	display: flex;
-	align-items: center;
 	position: relative;
 	margin-bottom: 32px;
 	align-items: flex-start;
 	&:last-of-type {
 		margin-bottom: 0;
 	}
+
 }
 
 .input_label {
 	width: 314px;
 	height: 48px;
 	display: flex;
-	align-items: center;
 	font-size: 16px;
+	align-items: flex-start;
 }
 
 .input_item {
@@ -61,6 +63,11 @@
 	box-sizing: border-box;
 	border-radius: 8px;
 	border: 1px solid rgba(186, 189, 191, 1);
+	&::placeholder {
+		font-size: 14px;
+		line-height: 19.6px;
+		color: #959799;
+	}
 
 	&:focus {
 		border: none;
@@ -83,7 +90,7 @@
 }
 
 .button_container {
-	margin-left: 314px;
+	margin-left: 769px;
 	display: flex;
 	gap: 20px;
 }
@@ -91,7 +98,6 @@
 .button {
 	width: 119px;
 	height: 48px;
-	/* margin-left: 314px;*/
 	padding: 12px 36px;
 	background-color: rgba(235, 235, 235, 1);
 	border-radius: 8px;
@@ -101,8 +107,6 @@
 	background-color: transparent;
 	color: rgba(23, 133, 229, 1);
 }
-
-/* можно вынести в global.scss конец*/
 
 .checkbox_container {
 	display: flex;
@@ -122,14 +126,19 @@
 	width: 614px;
 	height: 160px;
 	padding: 14px 16px;
-	font-size: 16px;
-	line-height: 19.6px;
+	&::placeholder {
+		font-size: 14px;
+		line-height: 19.6px;
+		color: #959799;
+
+	}
 }
 
 .input_description {
-	margin-top: 20px;
+	width: 665px;
 }
 .input_skills {
+	width: 665px;
 	display: flex;
 	flex-wrap: wrap;
 	margin-top: 20px;
@@ -138,17 +147,17 @@
 .skill_item {
 	display: flex;
 	margin-top: 12px;
-	margin-right: 12px;
-	padding: 8px 14px;
 	cursor: pointer;
+	margin-right: 12px;
 }
 
 .skill_button {
+	font-size: 14px;
 	height: 36px;
-	padding: 8px 14px;
 	border-radius: 40px;
 	border: 1px solid #ccc;
 	background-color: #fff;
+	line-height: 19.6px;
 }
 .selected_button {
 	background-color: #ebebeb;
@@ -160,16 +169,28 @@
 	margin: 0px 0px 0px 8px;
 }
 
-.textarea_item::placeholder {
-	padding: 14px 16px;
-	font-size: 16px;
-	line-height: 19.6px;
-}
 .selected {
 	background-color: #b9d1ff;
 }
 
 .input_span {
 	color: #959799;
-	margin-left: 20px;
+}
+
+.error_message {
+	margin-top: 5px;
+	padding-left: 6px;
+	font-size: 12px;
+	color: rgb(245, 52, 68);
+}
+
+.titlte_span{
+	margin-bottom: 44px;
+	margin-top: 12px;
+}
+
+.has_star::after {
+    content: '*';
+    color: #D6001D;
+    margin-left: 8px;
 }

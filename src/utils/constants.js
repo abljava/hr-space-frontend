@@ -203,7 +203,11 @@ export const educationOptions = [
 		name: 'higher',
 		text: 'Высшее',
 	},
-	{ id: '5', name: 'bachelor', text: 'Бакалавр' },
+	{
+		id: '5',
+		name: 'bachelor',
+		text: 'Бакалавр',
+	},
 	{
 		id: '6',
 		name: 'master',
@@ -251,3 +255,108 @@ export const frontendDeveloperSkills = [
 ];
 
 export const vacanciesList = ['Врач-анестезиолог', 'Фронтенд-разработчик', 'Другое'];
+
+export const tags = [
+	'Специальные навыки:',
+	'Квалификация:',
+	'Понимание бизнеса:',
+	'Дополнительные задачи',
+];
+
+export const information = [
+	{
+		id: '1',
+		name: 'resume',
+		text: 'Резюме',
+	},
+	{
+		id: '2',
+		name: 'interview',
+		text: 'Интервью',
+	},
+	{
+		id: '3',
+		name: 'candidate comments',
+		text: 'Комментарии по кандидату',
+	},
+	{
+		id: '4',
+		name: 'test task',
+		text: 'Тестовое задание',
+	},
+];
+export const conditions = [
+	{
+		id: '1',
+		name: 'trial_period',
+		text: 'Испытательный срок',
+	},
+	{
+		id: '2',
+		name: 'вusiness_trips',
+		text: 'Командировки',
+	},
+];
+
+export const вonuses = [
+	{
+		id: '1',
+		name: 'allowances',
+		text: 'Надбавки',
+	},
+	{
+		id: '2',
+		name: 'VMI',
+		text: 'ДМС',
+	},
+	{
+		id: '3',
+		name: 'nutrition',
+		text: 'Питание',
+	},
+	{
+		id: '4',
+		name: 'rental',
+		text: 'Аренда жилья',
+	},
+	{
+		id: '5',
+		name: 'commute_to_and_from_work',
+		text: 'Проезд до работы и обратно',
+	},
+	{
+		id: '6',
+		name: 'gas_payment',
+		text: 'Оплата бензина',
+	},
+	{
+		id: '7',
+		name: 'professional_training',
+		text: 'Профобучение',
+	},
+	{
+		id: '8',
+		name: 'uniform',
+		text: 'Униформа',
+	},
+	{
+		id: '9',
+		name: 'parking',
+		text: 'Парковка',
+	},
+	{
+		id: '10',
+		name: 'rest_area',
+		text: 'Зона отдыха',
+	},
+	{
+		id: '11',
+		name: 'mobile',
+		text: 'Оплата мобильной связи',
+	},
+	{
+		id: '12',
+		name: ' discounts',
+		text: 'Скидки в компании',
+	},
+];
