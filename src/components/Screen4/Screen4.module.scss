@@ -232,24 +232,32 @@
 	font-size: 16px;
 	line-height: 19.6px;
 	border-radius: 8px;
-	border: 1px solid #babdbf;
+	border: 1px solid rgba(186, 189, 191, 1);
 	padding: 14px 16px;
+	box-sizing: border-box;
+	
 	&::placeholder {
 		font-size: 14px;
 		line-height: 19.6px;
 		color: #babdbf;
+	}
+
+	&:focus {
+		border: none;
+		outline: 2px solid rgba(23, 133, 229, 1);
+		overflow-wrap: break-word;
 	}
 }
 
 .tag_list {
 	width: 614px;
 	display: flex;
+	gap: 16px;
 	flex-wrap: wrap;
+	margin-top: 16px;
 }
 
 .tag_button {
-	margin-top: 16px;
-	margin-right: 16px;
 	height: 36px;
 	padding: 8px 10px;
 	border-radius: 40px;
@@ -267,6 +275,13 @@
 	border-radius: 8px;
 	border: 1px solid #babdbf;
 	text-align: center;
+	box-sizing: border-box;
+
+	&:focus {
+		border: none;
+		outline: 2px solid rgba(23, 133, 229, 1);
+		overflow-wrap: break-word;
+	}
 }
 .input_wrapper {
 	position: relative;
