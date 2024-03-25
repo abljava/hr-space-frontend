@@ -1,32 +1,47 @@
 import { useNavigate } from 'react-router-dom';
-import { useForm, FormProvider, Controller } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 import cn from 'classnames';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { setData } from '../../slices/formSlice/formSlice';
+import { yupResolver } from '@hookform/resolvers/yup';
+import styles from './Screen3.module.scss';
+import validation from '../../utils/validation';
+import * as yup from 'yup';
 
 // import Switcher from '../Switcher/Switcher';
 import { CONTRACT, CONDITIONS, SCHEDULE } from '../../utils/constants';
 
-import styles from './Screen3.module.scss';
-import Checkbox from '../Checkbox/Checkbox';
-
 function Screen3() {
 	const navigate = useNavigate();
-
-	const form = useSelector(state => state.form.form);
 	const dispatch = useDispatch();
 
-	const methods = useForm({
-		mode: 'onBlur',
-		defaultValues: {},
+	const validation = yup.object().shape({
+		conditions: yup.array().of(yup.string()).min(1, 'Выберите хотя бы один фильтр'),
+		schedule: yup.array().of(yup.string()).min(1, 'Выберите хотя бы один фильтр'),
+		contract: yup.array().of(yup.string()).min(1, 'Выберите хотя бы один фильтр'),
+		salary_min: yup.string().required(),
+		salary_max: yup.string().required(),
 	});
 
 	const {
-		control,
-		formState: { errors },
-	} = useForm({ mode: 'onBlur' });
+		register,
+		handleSubmit,
+		watch,
+		formState: { errors, isValid },
+	} = useForm({
+		defaultValues: {
+			conditions: [],
+			schedule: [],
+			contract: [],
+			salary_min: '',
+			salary_max: '',
+		},
+		resolver: yupResolver(validation),
+	});
 
-	const watchInputs = methods.watch();
+	const watchInputs = watch();
+	console.log('watchInputs', watchInputs);
+
 	const inputSmall = cn(styles.input_item, styles.input_small);
 	const labelTop = cn(styles.input_label, styles.input_label_top);
 	const buttonBack = cn(styles.button, styles.button_back);
@@ -41,135 +56,118 @@ function Screen3() {
 		navigate('/');
 	};
 
-	// const isChecked = (array) => {
-	// 	 const res = array.map(item => methods.watch(item))
-	// 	 return res
-
-	// }
-
-	// console.log(isChecked(CONDITIONS));
-
-	console.log('watchInputs 3:', watchInputs);
-
 	return (
 		<section className={styles.container}>
 			<h1 className={styles.heading}>Условия для кандидата</h1>
 			<div className={styles.progress_bar}></div>
-			<FormProvider {...methods}>
-				<form
-					className={styles.form_container}
-					onSubmit={methods.handleSubmit(onSubmit)}
-					noValidate
-				>
-					<h2 className={styles.title}>О вакансии</h2>
-					<ul className={styles.input_list}>
-						<li className={styles.input_container}>
-							<label htmlFor="salary" className={styles.input_label}>
-								Зарплата на руки *
-							</label>
-							<div className={styles.fieldbox}>
-								<div className={styles.input}>
-									<input
-										{...methods.register('salary_min', {
-											required: 'Обязательное поле',
-										})}
-										type="text"
-										id="salary_min"
-										className={inputSmall}
-										placeholder="От"
-									/>
-									{methods.errors?.salary_min && (
-										<p className={styles.error}>{methods.errors?.salary_min?.message || 'error'}</p>
-									)}
-								</div>
-								<div className={styles.input}>
-									<input
-										{...methods.register('salary_max', {
-											required: 'Обязательное поле',
-										})}
-										type="text"
-										id="salary_max"
-										className={inputSmall}
-										placeholder="До"
-									/>
-									{methods.errors?.salary_max && (
-										<p className={styles.error}>{methods.errors?.salary_max?.message || 'error'}</p>
-									)}
-								</div>
-							</div>
-						</li>
-
-						{/* -------------------------------------------------- */}
-						{/* <li className={styles.input_container}>
-							<label htmlFor="checkbox" className={labelTop}>
-								Занятость *
-							</label>
-							<div>
-								<Controller
-									control={methods.control}
-									name="checkboxes"
-									render={({ field }) => (
-										<ul>
-											{CONDITIONS.map(({ id, name, text }, index) => (
-												<li key={id}>
-													<input type="checkbox" name={name} id={id} {...field} required />
-													<p>{text}</p>
-												</li>
-											))}
-										</ul>
-									)}
+			<form className={styles.form_container} onSubmit={handleSubmit(onSubmit)}>
+				<h2 className={styles.title}>О вакансии</h2>
+				<ul className={styles.input_list}>
+					<li className={styles.input_container}>
+						<label htmlFor="salary" className={styles.input_label}>
+							Зарплата на руки *
+						</label>
+						<div className={styles.fieldbox}>
+							<div className={styles.input}>
+								<input
+									{...register('salary_min')}
+									type="text"
+									id="salary_min"
+									className={inputSmall}
+									placeholder="От"
 								/>
+								{errors?.salary_min && (
+									<p className={styles.error}>{errors?.salary_min?.message || 'error'}</p>
+								)}
 							</div>
-						</li> */}
-						{/* -------------------------------------------------- */}
-
-						<li className={styles.input_container}>
-							<label htmlFor="checkbox" className={labelTop}>
-								Занятость *
-							</label>
-							<div>
-								{CONDITIONS.map(item => (
-									<Checkbox name={item.name} text={item.text} key={item.id} />
-								))}
+							<div className={styles.input}>
+								<input
+									{...register('salary_max')}
+									type="text"
+									id="salary_max"
+									className={inputSmall}
+									placeholder="До"
+								/>
+								{errors?.salary_max && (
+									<p className={styles.error}>{errors?.salary_max?.message || 'error'}</p>
+								)}
 							</div>
-						</li>
-						<li className={styles.input_container}>
-							<label htmlFor="checkbox" className={labelTop}>
-								График работы *
-							</label>
-							<div>
-								{SCHEDULE.map(item => (
-									<Checkbox name={item.name} text={item.text} key={item.id} />
-								))}
-							</div>
-						</li>
-						<li className={styles.input_container}>
-							<label htmlFor="checkbox" className={labelTop}>
-								Способ оформления
-							</label>
-							<div>
-								{CONTRACT.map(item => (
-									<Checkbox name={item.name} text={item.text} key={item.id} />
-								))}
-							</div>
-						</li>
-					</ul>
-					<div className={styles.button_container}>
-						<>
-							<button className={buttonBack} onClick={() => navigate('/2')}>
-								Назад
-							</button>
-							<button
-								disabled={!methods.formState.isValid}
-								className={!methods.formState.isValid ? styles.button : buttonDisabled}
-								onClick={handleClick}
-							>
-								Далее
-							</button>
-						</>
-					</div>
-				</form>
-			</FormProvider>
+						</div>
+					</li>
+					<li className={styles.input_container}>
+						<label htmlFor="checkbox" className={labelTop}>
+							Занятость *
+						</label>
+						<div>
+							{CONDITIONS.map(field => (
+								<div key={field.id} className={styles.checkbox_container}>
+									<input
+										type="checkbox"
+										className={styles.checkbox}
+										value={field.text}
+										{...register('conditions')}
+									/>
+									<p className={styles.description}>{field.text}</p>
+									{errors.conditions && <span>{errors.conditions.message}</span>}
+								</div>
+							))}
+						</div>
+					</li>
+					<li className={styles.input_container}>
+						<label htmlFor="checkbox" className={labelTop}>
+							График работы *
+						</label>
+						<div>
+							{SCHEDULE.map(field => (
+								<div key={field.id} className={styles.checkbox_container}>
+									<input
+										type="checkbox"
+										className={styles.checkbox}
+										value={field.text}
+										{...register('schedule')}
+									/>
+									<p className={styles.description}>{field.text}</p>
+									{errors.schedule && <span>{errors.schedule.message}</span>}
+								</div>
+							))}
+						</div>
+					</li>
+					<li className={styles.input_container}>
+						<label htmlFor="checkbox" className={labelTop}>
+							Способ оформления
+						</label>
+						<div>
+							{CONTRACT.map(field => (
+								<div key={field.id} className={styles.checkbox_container}>
+									<input
+										type="checkbox"
+										className={styles.checkbox}
+										value={field.text}
+										{...register('contract')}
+									/>
+									<p className={styles.description}>{field.text}</p>
+									{errors.contract && <span>{errors.contract.message}</span>}
+								</div>
+							))}
+						</div>
+					</li>
+				</ul>
+				<div className={styles.button_container}>
+					<>
+						<button className={buttonBack} onClick={() => navigate('/2')}>
+							Назад
+						</button>
+						<button
+							disabled={!isValid}
+							className={!isValid ? styles.button : buttonDisabled}
+							onClick={handleClick}
+							type="submit"
+						>
+							Далее
+						</button>
+					</>
+				</div>
+			</form>
 		</section>
 	);
 }

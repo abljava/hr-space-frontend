@@ -31,21 +31,8 @@ function Screen1() {
 		},
 	});
 
-	// const { handleSubmit, reset, setValue, control } = useForm({
-	// 	mode: 'onBlur',
-	// 	defaultValues: {
-	// 		vacancy: '',
-	// 		city: {},
-	// 		profession: '',
-	// 		relocate: 'false',
-	// 		remote: 'false',
-	// 		timezone_start: '',
-	// 		timezone_end: '',
-	// 	},
-	// });
-
 	const watchInputs = methods.watch();
-	console.log('watchInputs:', watchInputs);
+	// console.log('watchInputs:', watchInputs);
 
 	const inputLarge = cn(styles.input_item, styles.input_large);
 	const labelDisabled = cn(styles.input_label, styles.label_disabled);

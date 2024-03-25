@@ -48,7 +48,7 @@
 }
 
 .input_label {
-	width: 314px;
+	min-width: 314px;
 	height: 48px;
 	display: flex;
 	align-items: center;
@@ -133,14 +133,13 @@
 .input_skills {
 	display: flex;
 	flex-wrap: wrap;
-	margin-top: 20px;
+	gap: 12px;
+	// margin-top: 20px;
 }
 
 .skill_item {
 	display: flex;
-	margin-top: 12px;
-	margin-right: 12px;
-	padding: 8px 14px;
+	box-sizing: border-box;
 	cursor: pointer;
 }
 
@@ -172,7 +171,8 @@
 
 .input_span {
 	color: #959799;
-	margin-left: 20px;
+	margin-bottom: 20px;
+	display: block;
 }
 
 .checkbox_container {
@@ -216,4 +216,3 @@
 .description {
 	margin: 0 0 0 12px;
 }
-

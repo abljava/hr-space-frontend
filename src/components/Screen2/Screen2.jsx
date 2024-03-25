@@ -1,16 +1,13 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { useForm } from 'react-hook-form';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
-
 import cn from 'classnames';
 import styles from './Screen2.module.scss';
 import { setData } from '../../slices/formSlice/formSlice';
 import { EXPERIENCE, EDUCATION, SKILLS_DOCTOR } from '../../utils/constants';
-
-import Checkbox from '../Checkbox/Checkbox';
 
 function Screen2() {
 	// Состояние для выбранных навыков
@@ -19,7 +16,9 @@ function Screen2() {
 	const dispatch = useDispatch();
 
 	const validation = yup.object().shape({
-		isChecked: yup.array().of(yup.string()).min(1, 'Выберите хотя бы один фильтр'),
+		experience: yup.array().of(yup.string()).min(1, 'Выберите хотя бы одно значение'),
+		education: yup.array().of(yup.string()).min(1, 'Выберите хотя бы одно значение'),
+		responsibilities: yup.string().required(),
 	});
 
 	const {
@@ -28,8 +27,12 @@ function Screen2() {
 		watch,
 		formState: { errors, isValid },
 	} = useForm({
+		mode: 'onBlur',
 		defaultValues: {
-			isChecked: [],
+			experience: [],
+			education: [],
+			responsibilities: '',
+			skills: [],
 		},
 		resolver: yupResolver(validation),
 	});
@@ -73,41 +76,44 @@ function Screen2() {
 							</label>
 							<div>
 								{EXPERIENCE.map(field => (
-									<>
-										<div key={field.id} className={styles.checkbox_container}>
-											<input
-												type="checkbox"
-												className={styles.checkbox}
-												value={field.text}
-												{...register('isChecked')}
-											/>
-											<p className={styles.description}>{field.text}</p>
-										</div>
-										{errors.isChecked && <span>{errors.isChecked.message}</span>}
-									</>
-								))}
-							</div>
-						</li>
-						{/* <li className={styles.input_container}>
-							<label htmlFor="education" className={styles.input_label}>
-								Образование *
-							</label>
-							<div className={styles.checkbox_container}>
-								{EDUCATION.map(item => (
-									<div key={item.id}>
-										<Checkbox key={item.id} name={item.name} text={item.text} />
+									<div key={field.id} className={styles.checkbox_container}>
+										<input
+											type="checkbox"
+											className={styles.checkbox}
+											value={field.text}
+											{...register('experience')}
+										/>
+										<p className={styles.description}>{field.text}</p>
+										{errors.experience && <span>{errors.experience.message}</span>}
 									</div>
 								))}
 							</div>
-						</li> */}
+						</li>
+						<li className={styles.input_container}>
+							<label htmlFor="education" className={styles.input_label}>
+								Образование *
+							</label>
+							<div>
+								{EDUCATION.map(field => (
+									<div key={field.id} className={styles.checkbox_container}>
+										<input
+											type="checkbox"
+											className={styles.checkbox}
+											value={field.text}
+											{...register('education')}
+										/>
+										<p className={styles.description}>{field.text}</p>
+										{errors.education && <span>{errors.education.message}</span>}
+									</div>
+								))}
+							</div>
+						</li>
 						<li className={styles.input_container}>
 							<label htmlFor="responsibilities" className={styles.input_label}>
 								Обязанности сотрудника *
 							</label>
 							<textarea
-								{...register('responsibilities', {
-									required: 'Обязательное поле',
-								})}
+								{...register('responsibilities')}
 								id="responsibilities"
 								className={styles.textarea_item}
 								placeholder=""
@@ -129,6 +135,7 @@ function Screen2() {
 														[styles.selected]: selectedSkills.includes(skill),
 													})}
 													onClick={() => handleSkillSelect(skill)}
+													{...register('skills')}
 												>
 													{skill}
 												</button>
