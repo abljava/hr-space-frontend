@@ -5,8 +5,11 @@ import styles from './Checkbox.module.scss';
 function Checkbox({ name, text }) {
 	const {
 		register,
+		watch,
 		formState: { errors },
 	} = useFormContext();
+
+	const watchCheckbox = watch();
 
 	const error = errors[name]?.message || '';
 	// console.log('error:', error);

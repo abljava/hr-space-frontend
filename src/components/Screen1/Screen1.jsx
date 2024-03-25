@@ -1,30 +1,54 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 import { useForm, FormProvider, Controller } from 'react-hook-form';
 import cn from 'classnames';
+import { setData } from '../../slices/formSlice/formSlice';
 
 import Switcher from '../Switcher/Switcher';
 import Dropdown from '../Dropdown/Dropdown';
 import styles from './Screen1.module.scss';
-import { CITIES, PROFESSIONS } from '../../utils/constants';
 
-function Screen1({ onChange }) {
+function Screen1() {
 	const navigate = useNavigate();
 	const [isActive, setIsActive] = useState(false);
 	const [selected, setSelected] = useState('');
 
-	const methods = useForm({ mode: 'onBlur' });
+	const form = useSelector(state => state.form.form);
+	console.log('form:', form);
+	const dispatch = useDispatch();
+
+	const methods = useForm({
+		mode: 'onBlur',
+		defaultValues: {
+			vacancy: '',
+			city: '',
+			profession: '',
+			relocate: false,
+			remote: false,
+			timezone_start: '',
+			timezone_end: '',
+		},
+	});
 
 	const watchInputs = methods.watch();
+	// console.log('watchInputs:', watchInputs);
+
 	const inputLarge = cn(styles.input_item, styles.input_large);
+	const labelDisabled = cn(styles.input_label, styles.label_disabled);
+	const inputDisabled = cn(styles.input_item, styles.input_disabled);
+	const buttonDisabled = cn(styles.button, styles.button_disabled);
 
 	const onSubmit = dataSubmit => {
-		console.log('dataSubmit', dataSubmit);
+		console.log('dataSubmit1', dataSubmit);
+		// dispatch(setData(watchInputs));
 	};
 
-	const handleClick = () => {
-		onChange(watchInputs);
-		// navigate('/2');
+	const handleClick = e => {
+		// e.preventDefault()
+		dispatch(setData(watchInputs));
+
+		navigate('/2');
 	};
 
 	const handleDropdownClick = () => {
@@ -130,6 +154,7 @@ function Screen1({ onChange }) {
 								)}
 							</div>
 						</li>
+
 						<li className={styles.input_container}>
 							<label htmlFor="relocate" className={styles.input_label}>
 								Возможность релокации
@@ -144,26 +169,37 @@ function Screen1({ onChange }) {
 						</li>
 
 						<li className={styles.input_container}>
-							<label htmlFor="timezone" className={styles.input_label}>
+							<label
+								htmlFor="timezone"
+								className={watchInputs.remote ? styles.input_label : labelDisabled}
+							>
 								Часовые пояса
 							</label>
 							<input
 								{...methods.register('timezone_start')}
 								type="text"
 								id="timezone"
-								className={styles.input_item}
+								className={watchInputs.remote ? styles.input_item : inputDisabled}
+								// className={styles.input_item}
 								placeholder=""
+								disabled={!watchInputs.remote}
 							/>
 							<input
 								{...methods.register('timezone_end')}
 								type="text"
 								id="timezone"
-								className={styles.input_item}
+								className={watchInputs.remote ? styles.input_item : inputDisabled}
 								placeholder=""
+								disabled={!watchInputs.remote}
 							/>
 						</li>
 					</ul>
-					<button className={styles.button} onClick={handleClick}>
+					<button
+						type="button"
+						disabled={!methods.formState.isValid}
+						className={!methods.formState.isValid ? styles.button : buttonDisabled}
+						onClick={handleClick}
+					>
 						Далее
 					</button>
 				</form>

@@ -1,6 +1,7 @@
 /* можно вынести в global.scss начало*/
 .container {
-	margin: 44px 0 178px;
+	margin: 44px auto 178px;
+	padding: 0 96px;
 }
 
 .heading {
@@ -16,7 +17,6 @@
 	margin-bottom: 80px;
 }
 
-
 .form_container {
 	margin-bottom: 177px;
 }
@@ -27,7 +27,6 @@
 	margin-bottom: 44px;
 }
 
-
 .input_list {
 	margin: 0;
 	padding: 0;
@@ -36,7 +35,6 @@
 	flex-direction: column;
 	margin-bottom: 80px;
 }
-
 
 .input_container {
 	display: flex;
@@ -50,7 +48,7 @@
 }
 
 .input_label {
-	width: 314px;
+	min-width: 314px;
 	height: 48px;
 	display: flex;
 	align-items: center;
@@ -100,83 +98,121 @@
 	border-radius: 8px;
 }
 
+.button_disabled {
+	color: rgba(255, 255, 255, 1);
+	background-color: rgba(23, 133, 229, 1);
+}
+
 .button_back {
 	background-color: transparent;
 	color: rgba(23, 133, 229, 1);
 }
 
-
 /* можно вынести в global.scss конец*/
 
-.checkbox_container {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-  }
-  .checkbox_label {
-    display: flex;
-    align-items: center;
-  }
-  .checkbox_input {
-    margin-right: 12px;
-    width: 20px;
-    height: 20px;
-  }
-  .textarea_item{
-width: 614px;
-height: 160px;
-padding: 14px 16px;
+.textarea_item {
+	width: 614px;
+	height: 160px;
+	padding: 14px 16px;
 	font-size: 16px;
 	line-height: 19.6px;
-  }
+	box-sizing: border-box;
+	border-radius: 8px;
+	border: 1px solid rgba(186, 189, 191, 1);
 
-.input_description{
+	&:focus {
+		border: none;
+		outline: 2px solid rgba(23, 133, 229, 1);
+		overflow-wrap: break-word;
+	}
+}
+
+.input_description {
 	margin-top: 20px;
 }
-  .input_skills {
+.input_skills {
 	display: flex;
 	flex-wrap: wrap;
-	margin-top: 20px;
-  }
-
-  .skill_item {
-	display: flex;
-	margin-top: 12px;
-	margin-right: 12px;
-	padding: 8px 14px;
-	cursor: pointer;
-
+	gap: 12px;
+	// margin-top: 20px;
 }
 
-  .skill_button {
+.skill_item {
+	display: flex;
+	box-sizing: border-box;
+	cursor: pointer;
+}
+
+.skill_button {
 	height: 36px;
 	padding: 8px 14px;
 	border-radius: 40px;
 	border: 1px solid #ccc;
-	background-color: #fff ;
-  }
-  .selected_button{
-	background-color: #EBEBEB
-  }
+	background-color: #fff;
+}
+.selected_button {
+	background-color: #ebebeb;
+}
 
-  .close_icon{
+.close_icon {
 	width: 16px;
 	height: 16px;
 	margin: 0px 0px 0px 8px;
-  }
+}
 
-
-  .textarea_item::placeholder {
+.textarea_item::placeholder {
 	padding: 14px 16px;
 	font-size: 16px;
 	line-height: 19.6px;
-  }
-  .selected{
-	background-color:  #B9D1FF;
-  }
+}
+.selected {
+	background-color: #b9d1ff;
+}
 
-  .input_span{
+.input_span {
 	color: #959799;
-	margin-left: 20px;
-  }
+	margin-bottom: 20px;
+	display: block;
+}
 
+.checkbox_container {
+	display: flex;
+	margin-bottom: 12px;
+	&:last-of-type {
+		margin-bottom: 0;
+	}
+}
+
+.checkbox {
+	width: 20px;
+	height: 20px;
+	border: 0;
+	border-radius: 4px;
+	border: 1px solid rgba(186, 189, 191, 1);
+	-webkit-appearance: none;
+	appearance: none;
+	background-color: transparent;
+	padding: 0;
+	cursor: pointer;
+	transition: 0.3s opacity;
+	place-content: center;
+	display: grid;
+	&:focus {
+		outline: none;
+	}
+	&:checked::before {
+		content: '';
+		width: 20px;
+		height: 20px;
+		border-radius: 4px;
+		border: none;
+		background-color: rgba(0, 112, 255, 1);
+		background-image: url('../../assets/images/checkbox-icon.svg');
+		background-repeat: no-repeat;
+		background-position: center;
+	}
+}
+
+.description {
+	margin: 0 0 0 12px;
+}
