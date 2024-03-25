@@ -9,6 +9,8 @@ function Checkbox({ name, text }) {
 		formState: { errors },
 	} = useFormContext();
 
+	const watchCheckbox = watch();
+
 	const error = errors[name]?.message || '';
 	// console.log('error:', error);
 

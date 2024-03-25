@@ -150,7 +150,7 @@ export const PROFESSIONS = [
 	},
 ];
 
-export const workExperience = [
+export const EXPERIENCE = [
 	{
 		id: '1',
 		name: 'no_experience',
@@ -178,7 +178,7 @@ export const workExperience = [
 	},
 ];
 
-export const educationOptions = [
+export const EDUCATION = [
 	{
 		id: '1',
 		name: 'secondary',
@@ -225,7 +225,7 @@ export const educationOptions = [
 		text: 'Не имеет значения',
 	},
 ];
-export const doctorSkills = [
+export const SKILLS_DOCTOR = [
 	'Анестезиология',
 	'Стоматология',
 	'Неотложная помощь',
@@ -235,7 +235,7 @@ export const doctorSkills = [
 	'Пользователь ПК',
 ];
 
-export const frontendDeveloperSkills = [
+export const SKILLS_DEV = [
 	'HTML',
 	'CSS',
 	'JavaScript',
@@ -250,4 +250,4 @@ export const frontendDeveloperSkills = [
 	'Английский язык',
 ];
 
-export const vacanciesList = ['Врач-анестезиолог', 'Фронтенд-разработчик', 'Другое'];
+export const VACANCIES = ['Врач-анестезиолог', 'Фронтенд-разработчик', 'Другое'];

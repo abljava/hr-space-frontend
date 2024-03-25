@@ -18,15 +18,7 @@ function Screen3() {
 
 	const methods = useForm({
 		mode: 'onBlur',
-		defaultValues: {
-			vacancy: '',
-			city: '',
-			profession: '',
-			relocate: false,
-			remote: false,
-			timezone_start: '',
-			timezone_end: '',
-		},
+		defaultValues: {},
 	});
 
 	const {
@@ -41,7 +33,7 @@ function Screen3() {
 	const buttonDisabled = cn(styles.button, styles.button_disabled);
 
 	const onSubmit = dataSubmit => {
-		console.log('dataSubmit', dataSubmit);
+		console.log('dataSubmit3', dataSubmit);
 	};
 
 	const handleClick = () => {
@@ -57,7 +49,7 @@ function Screen3() {
 
 	// console.log(isChecked(CONDITIONS));
 
-	console.log('watchInputs:', watchInputs);
+	console.log('watchInputs 3:', watchInputs);
 
 	return (
 		<section className={styles.container}>

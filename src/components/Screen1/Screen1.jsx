@@ -8,7 +8,6 @@ import { setData } from '../../slices/formSlice/formSlice';
 import Switcher from '../Switcher/Switcher';
 import Dropdown from '../Dropdown/Dropdown';
 import styles from './Screen1.module.scss';
-import { CITIES, PROFESSIONS } from '../../utils/constants';
 
 function Screen1() {
 	const navigate = useNavigate();
@@ -16,6 +15,7 @@ function Screen1() {
 	const [selected, setSelected] = useState('');
 
 	const form = useSelector(state => state.form.form);
+	console.log('form:', form);
 	const dispatch = useDispatch();
 
 	const methods = useForm({
@@ -53,10 +53,12 @@ function Screen1() {
 	const buttonDisabled = cn(styles.button, styles.button_disabled);
 
 	const onSubmit = dataSubmit => {
-		console.log('dataSubmit', dataSubmit);
+		console.log('dataSubmit1', dataSubmit);
+		// dispatch(setData(watchInputs));
 	};
 
-	const handleClick = () => {
+	const handleClick = e => {
+		// e.preventDefault()
 		dispatch(setData(watchInputs));
 
 		navigate('/2');
@@ -206,6 +208,7 @@ function Screen1() {
 						</li>
 					</ul>
 					<button
+						type="button"
 						disabled={!methods.formState.isValid}
 						className={!methods.formState.isValid ? styles.button : buttonDisabled}
 						onClick={handleClick}

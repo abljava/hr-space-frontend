@@ -3,12 +3,12 @@ import { createSlice } from '@reduxjs/toolkit';
 const formSlice = createSlice({
 	name: 'form',
 	initialState: {
-		form: [],
+		form: {},
 	},
 
 	reducers: {
 		setData: (state, action) => {
-			state.form.push(action.payload);
+			state.form = { ...state.form, ...action.payload };
 		},
 	},
 });

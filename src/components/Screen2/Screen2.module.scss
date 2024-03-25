@@ -110,26 +110,21 @@
 
 /* можно вынести в global.scss конец*/
 
-.checkbox_container {
-	display: flex;
-	flex-direction: column;
-	gap: 12px;
-}
-.checkbox_label {
-	display: flex;
-	align-items: center;
-}
-.checkbox_input {
-	margin-right: 12px;
-	width: 20px;
-	height: 20px;
-}
 .textarea_item {
 	width: 614px;
 	height: 160px;
 	padding: 14px 16px;
 	font-size: 16px;
 	line-height: 19.6px;
+	box-sizing: border-box;
+	border-radius: 8px;
+	border: 1px solid rgba(186, 189, 191, 1);
+
+	&:focus {
+		border: none;
+		outline: 2px solid rgba(23, 133, 229, 1);
+		overflow-wrap: break-word;
+	}
 }
 
 .input_description {
@@ -179,3 +174,46 @@
 	color: #959799;
 	margin-left: 20px;
 }
+
+.checkbox_container {
+	display: flex;
+	margin-bottom: 12px;
+	&:last-of-type {
+		margin-bottom: 0;
+	}
+}
+
+.checkbox {
+	width: 20px;
+	height: 20px;
+	border: 0;
+	border-radius: 4px;
+	border: 1px solid rgba(186, 189, 191, 1);
+	-webkit-appearance: none;
+	appearance: none;
+	background-color: transparent;
+	padding: 0;
+	cursor: pointer;
+	transition: 0.3s opacity;
+	place-content: center;
+	display: grid;
+	&:focus {
+		outline: none;
+	}
+	&:checked::before {
+		content: '';
+		width: 20px;
+		height: 20px;
+		border-radius: 4px;
+		border: none;
+		background-color: rgba(0, 112, 255, 1);
+		background-image: url('../../assets/images/checkbox-icon.svg');
+		background-repeat: no-repeat;
+		background-position: center;
+	}
+}
+
+.description {
+	margin: 0 0 0 12px;
+}
+
