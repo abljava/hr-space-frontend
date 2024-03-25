@@ -3,12 +3,11 @@ import { useForm } from 'react-hook-form';
 import cn from 'classnames';
 import { useDispatch } from 'react-redux';
 import { setData } from '../../slices/formSlice/formSlice';
+import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import styles from './Screen3.module.scss';
 import validation from '../../utils/validation';
-import * as yup from 'yup';
 
-// import Switcher from '../Switcher/Switcher';
 import { CONTRACT, CONDITIONS, SCHEDULE } from '../../utils/constants';
 
 function Screen3() {
@@ -53,7 +52,7 @@ function Screen3() {
 
 	const handleClick = () => {
 		dispatch(setData(watchInputs));
-		navigate('/');
+		navigate('/4');
 	};
 
 	return (

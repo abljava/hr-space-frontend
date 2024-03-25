@@ -18,8 +18,8 @@ function Screen2() {
 	const validation = yup.object().shape({
 		experience: yup.array().of(yup.string()).min(1, 'Выберите хотя бы одно значение'),
 		education: yup.array().of(yup.string()).min(1, 'Выберите хотя бы одно значение'),
-		additional: yup.array().of(yup.string()).min(1, 'Выберите хотя бы одно значение'),
-		bonuses: yup.array().of(yup.string()).min(1, 'Выберите хотя бы одно значение'),
+		// additional: yup.array().of(yup.string()).min(1, 'Выберите хотя бы одно значение'),
+		// bonuses: yup.array().of(yup.string()).min(1, 'Выберите хотя бы одно значение'),
 		responsibilities: yup.string().required(),
 	});
 

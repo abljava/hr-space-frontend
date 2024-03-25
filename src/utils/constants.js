@@ -252,14 +252,14 @@ export const SKILLS_DEV = [
 
 export const VACANCIES = ['Врач-анестезиолог', 'Фронтенд-разработчик', 'Другое'];
 
-export const tags = [
+export const TAGS = [
 	'Специальные навыки:',
 	'Квалификация:',
 	'Понимание бизнеса:',
 	'Дополнительные задачи:',
 ];
 
-export const information = [
+export const INFORMATION = [
 	{
 		id: '1',
 		name: 'resume',
@@ -281,7 +281,7 @@ export const information = [
 		text: 'Тестовое задание',
 	},
 ];
-export const conditions = [
+export const ADDITIONAL = [
 	{
 		id: '1',
 		name: 'trial_period',
@@ -294,7 +294,7 @@ export const conditions = [
 	},
 ];
 
-export const вonuses = [
+export const BONUSES = [
 	{
 		id: '1',
 		name: 'allowances',
