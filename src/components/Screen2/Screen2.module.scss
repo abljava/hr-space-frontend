@@ -1,10 +1,12 @@
-/* можно вынести в global.scss начало*/
 .container {
 	margin: 44px auto 178px;
 	padding: 0 96px;
 }
 
 .heading {
+	font-family: Inter;
+	font-weight: 700;
+	text-align: left;
 	font-size: 32px;
 	line-height: 37.12px;
 	margin: 0 0 28px;
@@ -38,7 +40,6 @@
 
 .input_container {
 	display: flex;
-	align-items: center;
 	position: relative;
 	margin-bottom: 32px;
 	align-items: flex-start;
@@ -51,8 +52,8 @@
 	min-width: 314px;
 	height: 48px;
 	display: flex;
-	align-items: center;
 	font-size: 16px;
+	align-items: flex-start;
 }
 
 .input_item {
@@ -62,6 +63,11 @@
 	box-sizing: border-box;
 	border-radius: 8px;
 	border: 1px solid rgba(186, 189, 191, 1);
+	&::placeholder {
+		font-size: 14px;
+		line-height: 19.6px;
+		color: #959799;
+	}
 
 	&:focus {
 		border: none;
@@ -84,7 +90,7 @@
 }
 
 .button_container {
-	margin-left: 314px;
+	margin-left: 769px;
 	display: flex;
 	gap: 20px;
 }
@@ -92,7 +98,6 @@
 .button {
 	width: 119px;
 	height: 48px;
-	/* margin-left: 314px;*/
 	padding: 12px 36px;
 	background-color: rgba(235, 235, 235, 1);
 	border-radius: 8px;
@@ -145,7 +150,6 @@
 
 .skill_button {
 	height: 36px;
-	padding: 8px 14px;
 	border-radius: 40px;
 	border: 1px solid #ccc;
 	background-color: #fff;

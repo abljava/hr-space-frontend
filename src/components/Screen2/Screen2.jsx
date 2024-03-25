@@ -7,7 +7,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import cn from 'classnames';
 import styles from './Screen2.module.scss';
 import { setData } from '../../slices/formSlice/formSlice';
-import { EXPERIENCE, EDUCATION, SKILLS_DOCTOR } from '../../utils/constants';
+import { EXPERIENCE, EDUCATION, SKILLS_DOCTOR, ADDITIONAL, BONUSES } from '../../utils/constants';
 
 function Screen2() {
 	// Состояние для выбранных навыков
@@ -18,6 +18,8 @@ function Screen2() {
 	const validation = yup.object().shape({
 		experience: yup.array().of(yup.string()).min(1, 'Выберите хотя бы одно значение'),
 		education: yup.array().of(yup.string()).min(1, 'Выберите хотя бы одно значение'),
+		additional: yup.array().of(yup.string()).min(1, 'Выберите хотя бы одно значение'),
+		bonuses: yup.array().of(yup.string()).min(1, 'Выберите хотя бы одно значение'),
 		responsibilities: yup.string().required(),
 	});
 
@@ -31,6 +33,8 @@ function Screen2() {
 		defaultValues: {
 			experience: [],
 			education: [],
+			additional: [],
+			bonuses: [],
 			responsibilities: '',
 			skills: [],
 		},
@@ -39,6 +43,7 @@ function Screen2() {
 
 	const buttonBack = cn(styles.button, styles.button_back);
 	const buttonDisabled = cn(styles.button, styles.button_disabled);
+	const inputLarge = cn(styles.input_item, styles.input_large);
 
 	const watchInputs = watch();
 	//const buttonBack = cn(styles.button, styles.button_back);
@@ -53,9 +58,7 @@ function Screen2() {
 	};
 
 	const handleSkillSelect = skill => {
-		// Проверяем, был ли навык выбран
 		const isSkillSelected = selectedSkills.includes(skill);
-		// Если выбран, убираем из списка выбранных, иначе добавляем
 		setSelectedSkills(prevSkills =>
 			isSkillSelected
 				? prevSkills.filter(selectedSkill => selectedSkill !== skill)
@@ -67,7 +70,7 @@ function Screen2() {
 			<section className={styles.container}>
 				<h1 className={styles.heading}>Новая заявка</h1>
 				<div className={styles.progress_bar}></div>
-				<form className={styles.form_container} onSubmit={handleSubmit(onSubmit)} noValidate>
+				<form className={styles.form_container} onSubmit={handleSubmit(onSubmit)}>
 					<h2 className={styles.title}>Требования и обязанности</h2>
 					<ul className={styles.input_list}>
 						<li className={styles.input_container}>
@@ -154,6 +157,72 @@ function Screen2() {
 								id="requirements"
 								className={styles.textarea_item}
 								placeholder="Обязательные или те, которые приветствуются"
+							/>
+						</li>
+						<li className={styles.input_container}>
+							<label htmlFor="checkbox" className={styles.input_label}>
+								Дополнительные условия
+							</label>
+							<div>
+								{ADDITIONAL.map(field => (
+									<div key={field.id} className={styles.checkbox_container}>
+										<input
+											type="checkbox"
+											className={styles.checkbox}
+											value={field.text}
+											{...register('additional')}
+										/>
+										<p className={styles.description}>{field.text}</p>
+										{errors.additional && <span>{errors.additional.message}</span>}
+									</div>
+								))}
+							</div>
+						</li>
+						<li className={styles.input_container}>
+							<label htmlFor="checkbox" className={styles.input_label}>
+								Бонусы
+							</label>
+							<div>
+								{BONUSES.map(field => (
+									<div key={field.id} className={styles.checkbox_container}>
+										<input
+											type="checkbox"
+											className={styles.checkbox}
+											value={field.text}
+											{...register('bonuses')}
+										/>
+										<p className={styles.description}>{field.text}</p>
+										{errors.bonuses && <span>{errors.bonuses.message}</span>}
+									</div>
+								))}
+							</div>
+						</li>
+
+						<h2 className={styles.titlte_span}>О работодателе</h2>
+						<li className={styles.input_container}>
+							<label htmlFor="company" className={styles.input_label}>
+								Название организации
+							</label>
+							<div>
+								<input
+									{...register('company')}
+									type="text"
+									id="company"
+									className={inputLarge}
+									placeholder="ИП Иванов Иван Иванович"
+								/>
+							</div>
+						</li>
+
+						<li className={styles.input_container}>
+							<label htmlFor="description" className={styles.input_label}>
+								Описание
+							</label>
+							<textarea
+								{...register('description')}
+								id="description"
+								className={styles.textarea_item}
+								placeholder="Эта информация может заинтересовать соискателя"
 							/>
 						</li>
 					</ul>
