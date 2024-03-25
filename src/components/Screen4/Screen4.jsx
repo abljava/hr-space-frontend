@@ -23,6 +23,7 @@ function Screen4() {
 	const [tagsList, setTagsList] = useState([]);
 	const buttonBack = cn(styles.button, styles.button_back);
 	const labelClass = cn(styles.input_label, styles.narrow_label);
+	const buttonDisabled = cn(styles.button, styles.button_disabled);
 
 	const validation = yup.object().shape({});
 
@@ -81,7 +82,7 @@ function Screen4() {
 	};
 
 	const handleClick = () => {
-		navigate('/4');
+		navigate('/5');
 		dispatch(setData(watchInputs));
 	};
 
@@ -265,7 +266,12 @@ function Screen4() {
 							<button className={buttonBack} onClick={() => navigate('/3')}>
 								Назад
 							</button>
-							<button className={styles.button} onClick={handleClick}>
+							<button
+								disabled={!isValid}
+								className={!isValid ? styles.button : buttonDisabled}
+								onClick={handleClick}
+								type="submit"
+							>
 								Далее
 							</button>
 						</>

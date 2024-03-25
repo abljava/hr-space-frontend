@@ -1,0 +1,171 @@
+.container {
+	margin: 44px 0 178px;
+}
+
+.heading {
+	font-family: Inter;
+	font-weight: 700;
+	font-size: 32px;
+	line-height: 37.12px;
+	margin: 0 0 28px;
+}
+
+.progress_bar {
+	width: 388px;
+	height: 8px;
+	background-color: rgba(185, 209, 255, 1);
+	margin-bottom: 80px;
+}
+.progress_bar_new {
+	margin-bottom: 60px;
+}
+.second_title {
+	margin-bottom: 40px;
+    font-size: 24px;
+}
+
+.container_payment {
+	display: flex;
+	margin-bottom: 40px;
+	height: 168px;
+}
+
+.column {
+	width: 297px;
+	border-radius: 20px 20px 0 0;
+	margin-right: 12px;
+}
+
+.name {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+}
+
+.content {
+	display: flex;
+	justify-content: center;
+	height: 98px;
+	background-color: #f4f7fa;
+	flex-direction: column;
+	border-radius: 0 0 20px 20px;
+}
+
+p {
+	margin: 0;
+}
+.content_text {
+	padding: 29px 24px;
+    font-size: 18px;
+}
+.first_line {
+	margin-bottom: 12px;
+    font-size: 18px;
+
+
+}
+.second_line{
+font-size: 18px;
+}
+.additional_content{
+padding: 0px 24px;
+}
+.first {
+	height: 70px;
+	background-color: #cedfff;
+
+
+}
+.color_text_one{
+    color: #598BEA;
+    font-size: 32px;
+}
+.second {
+	height: 70px;
+	background-color: #e5d3ff;
+
+}
+.color_text_two{
+    color: #864DD7;
+    font-size: 32px;
+
+}
+.third {
+	height: 70px;
+	background-color: #ffd9c0;
+
+
+}
+.color_text_three{
+    color: #C96E32;
+    font-size: 32px;
+}
+
+.button_container {
+	margin-left: 769px;
+	display: flex;
+	gap: 20px;
+}
+.secondary_button_container{
+    margin-left: 1045px;
+}
+.button {
+	width: 119px;
+	height: 48px;
+	padding: 12px 36px;
+	background-color: rgba(235, 235, 235, 1);
+	border-radius: 8px;
+}
+
+.button_back {
+	background-color: transparent;
+	color: rgba(23, 133, 229, 1);
+}
+
+.third_title {
+	margin-top: 60px;
+	margin-bottom: 40px;
+    font-size: 24px;
+}
+
+.wrapper {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 20px;
+	margin-bottom: 40px;
+}
+
+.column_recruiter {
+	width: 297px;
+	background-color: #f4f7fa;
+	padding: 24px 16px;
+	border-radius: 12px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	text-align: center;
+}
+
+.title__recruiter {
+	margin-top: 16px;
+	font-size: 24px;
+}
+
+.subtitle_recruiter {
+	margin-top: 16px;
+	font-size: 16px;
+}
+.column_first {
+	height: 380px;
+}
+.column_second {
+	height: 428px;
+}
+
+.column_third {
+	height: 428px;
+}
+.column_fourth {
+	height: 372px;
+}
