@@ -112,7 +112,7 @@ function Screen1() {
 									)}
 									<button className={styles.button_modal} onClick={handleDropdownClick} />
 								</div>
-								<Controller
+								{/* <Controller
 									control={methods.control}
 									name="dropdown"
 									render={({ field: { onChange, onBlur, value, name }, fieldState: { error } }) => (
@@ -125,7 +125,7 @@ function Screen1() {
 											selected={selected}
 										/>
 									)}
-								/>
+								/> */}
 							</div>
 
 							{/* {isActive && (

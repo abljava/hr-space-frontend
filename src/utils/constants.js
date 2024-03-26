@@ -371,3 +371,18 @@ export const AMOUNT = [
 		name: '3',
 	},
 ];
+
+export const PAYMENT = [
+	{
+		id: '1',
+		name: '100% сразу',
+	},
+	{
+		id: '1',
+		name: '100% сразу',
+	},
+	{
+		id: '1',
+		name: '100% сразу',
+	},
+];

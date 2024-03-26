@@ -109,6 +109,16 @@ p {
 	top: 0;
 	left: 0;
 	cursor: pointer;
+	display: grid;
+
+	&:checked::before {
+		content: '';
+		width: 298px;
+		height: 168px;
+		border-radius: 20px;
+		border: none;
+		background-color: rgba(31, 36, 39, 0.1);
+	}
 }
 
 .button_container {

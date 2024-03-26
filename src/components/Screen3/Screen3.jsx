@@ -6,7 +6,6 @@ import { setData } from '../../slices/formSlice/formSlice';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import styles from './Screen3.module.scss';
-import validation from '../../utils/validation';
 
 import { CONTRACT, CONDITIONS, SCHEDULE } from '../../utils/constants';
 

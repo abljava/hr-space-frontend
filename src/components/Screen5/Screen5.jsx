@@ -16,13 +16,7 @@ function Screen5() {
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
 
-	const validation = yup.object().shape({
-		experience: yup.array().of(yup.string()).min(1, 'Выберите хотя бы одно значение'),
-		education: yup.array().of(yup.string()).min(1, 'Выберите хотя бы одно значение'),
-		// additional: yup.array().of(yup.string()).min(1, 'Выберите хотя бы одно значение'),
-		// bonuses: yup.array().of(yup.string()).min(1, 'Выберите хотя бы одно значение'),
-		responsibilities: yup.string().required(),
-	});
+	const validation = yup.object().shape({});
 
 	const {
 		register,

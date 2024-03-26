@@ -93,7 +93,7 @@ function Screen4() {
 	};
 
 	const handleClick = () => {
-		navigate('/4');
+		navigate('/5');
 		// dispatch(setData(watchInputs));
 	};
 
