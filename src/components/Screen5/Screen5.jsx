@@ -31,14 +31,7 @@ function Screen5() {
 		formState: { errors, isValid },
 	} = useForm({
 		mode: 'onBlur',
-		defaultValues: {
-			experience: [],
-			education: [],
-			additional: [],
-			bonuses: [],
-			responsibilities: '',
-			skills: [],
-		},
+		defaultValues: {},
 		resolver: yupResolver(validation),
 	});
 
@@ -47,7 +40,7 @@ function Screen5() {
 	const watchInputs = watch();
 
 	const onSubmit = dataSubmit => {
-		console.log('dataSubmit2', dataSubmit);
+		console.log('dataSubmit5', dataSubmit);
 	};
 
 	const handleClick = () => {
@@ -70,6 +63,7 @@ function Screen5() {
 							<div className={styles.content}>
 								<p className={styles.content_text}>100% сразу после выхода сотрудника</p>
 							</div>
+							<input {...register('100_percent_before')} type="radio" className={styles.radio} />
 						</div>
 						<div className={`${styles.column} ${styles.second}`}>
 							<div className={styles.name}>
@@ -79,6 +73,7 @@ function Screen5() {
 								<p className={styles.first_line}>50% после выхода</p>
 								<p className={styles.second_line}>50% после гарантийного периода</p>
 							</div>
+							<input {...register('50_50')} type="radio" className={styles.radio} />
 						</div>
 						<div className={`${styles.column} ${styles.third}`}>
 							<div className={styles.name}>
@@ -87,6 +82,7 @@ function Screen5() {
 							<div className={styles.content}>
 								<p className={styles.content_text}>100% после гарантийного периода</p>
 							</div>
+							<input {...register('100_percent_after')} type="radio" className={styles.radio} />
 						</div>
 					</div>
 					<h2 className={`${styles.title} ${styles.third_title}`}>
@@ -136,8 +132,8 @@ function Screen5() {
 								Назад
 							</button>
 							<button
-								disabled={!isValid}
-								className={!isValid ? styles.button : buttonDisabled}
+								// disabled={!isValid}
+								// className={!isValid ? styles.button : buttonDisabled}
 								onClick={handleClick}
 								type="submit"
 							>
