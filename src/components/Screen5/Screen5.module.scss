@@ -1,8 +1,9 @@
 .container {
 	margin: 44px auto 178px;
-	padding: 0 96px;}
+	padding: 0 96px;
+}
 
-.form_container{
+.form_container {
 	width: 1248px;
 	display: grid;
 }
@@ -26,7 +27,7 @@
 }
 .second_title {
 	margin-bottom: 40px;
-    font-size: 24px;
+	font-size: 24px;
 }
 
 .container_payment {
@@ -63,49 +64,41 @@ p {
 }
 .content_text {
 	padding: 29px 24px;
-    font-size: 18px;
+	font-size: 18px;
 }
 .first_line {
 	margin-bottom: 12px;
-    font-size: 18px;
-
-
+	font-size: 18px;
 }
-.second_line{
-font-size: 18px;
+.second_line {
+	font-size: 18px;
 }
-.additional_content{
-padding: 0px 24px;
+.additional_content {
+	padding: 0px 24px;
 }
 .first {
-border-radius: 20px;	
-background-color: #cedfff;
-
-
+	border-radius: 20px;
+	background-color: #cedfff;
 }
-.color_text_one{
-    color: #598BEA;
-    font-size: 32px;
+.color_text_one {
+	color: #598bea;
+	font-size: 32px;
 }
 .second {
-	border-radius: 20px;	
+	border-radius: 20px;
 	background-color: #e5d3ff;
-
 }
-.color_text_two{
-    color: #864DD7;
-    font-size: 32px;
-
+.color_text_two {
+	color: #864dd7;
+	font-size: 32px;
 }
 .third {
-	border-radius: 20px;	
+	border-radius: 20px;
 	background-color: #ffd9c0;
-
-
 }
-.color_text_three{
-    color: #C96E32;
-    font-size: 32px;
+.color_text_three {
+	color: #c96e32;
+	font-size: 32px;
 }
 
 .radio {
@@ -116,7 +109,6 @@ background-color: #cedfff;
 	top: 0;
 	left: 0;
 	cursor: pointer;
-
 }
 
 .button_container {
@@ -141,7 +133,7 @@ background-color: #cedfff;
 .third_title {
 	margin-top: 60px;
 	margin-bottom: 40px;
-    font-size: 24px;
+	font-size: 24px;
 }
 
 .wrapper {
