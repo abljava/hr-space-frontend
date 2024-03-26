@@ -59,7 +59,14 @@ function Screen1() {
 	return (
 		<section className={styles.container}>
 			<h1 className={styles.heading}>Новая заявка</h1>
-			<div className={styles.progress_bar}></div>
+			<ul className={styles.progress_bar}>
+				<li className={styles.list_item}></li>
+				<li className={styles.list_item}></li>
+				<li className={styles.list_item}></li>
+				<li className={styles.list_item}></li>
+				<li className={styles.list_item}></li>
+				<li className={styles.list_item}></li>
+			</ul>
 			<FormProvider {...methods}>
 				<form
 					className={styles.form_container}

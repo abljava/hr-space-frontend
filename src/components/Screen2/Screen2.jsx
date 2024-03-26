@@ -69,7 +69,14 @@ function Screen2() {
 		<>
 			<section className={styles.container}>
 				<h1 className={styles.heading}>Новая заявка</h1>
-				<div className={styles.progress_bar}></div>
+				<ul className={styles.progress_bar}>
+					<li className={styles.list_item}></li>
+					<li className={styles.list_item}></li>
+					<li className={styles.list_item}></li>
+					<li className={styles.list_item}></li>
+					<li className={styles.list_item}></li>
+					<li className={styles.list_item}></li>
+				</ul>
 				<form className={styles.form_container} onSubmit={handleSubmit(onSubmit)}>
 					<h2 className={styles.title}>Требования и обязанности</h2>
 					<ul className={styles.input_list}>

@@ -56,6 +56,15 @@ function Screen3() {
 
 	return (
 		<section className={styles.container}>
+			<h1 className={styles.heading}>Новая заявка</h1>
+			<ul className={styles.progress_bar}>
+				<li className={styles.list_item}></li>
+				<li className={styles.list_item}></li>
+				<li className={styles.list_item}></li>
+				<li className={styles.list_item}></li>
+				<li className={styles.list_item}></li>
+				<li className={styles.list_item}></li>
+			</ul>
 			<h1 className={styles.heading}>Условия для кандидата</h1>
 			<div className={styles.progress_bar}></div>
 			<form className={styles.form_container} onSubmit={handleSubmit(onSubmit)}>

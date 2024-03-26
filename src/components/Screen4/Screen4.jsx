@@ -101,7 +101,14 @@ function Screen4() {
 		<>
 			<section className={styles.container}>
 				<h1 className={styles.heading}>Новая заявка</h1>
-				<div className={`${styles.progress_bar} ${styles.progress_bar_new}`}></div>
+				<ul className={`${styles.progress_bar} ${styles.progress_bar_new}`}>
+					<li className={styles.list_item}></li>
+					<li className={styles.list_item}></li>
+					<li className={styles.list_item}></li>
+					<li className={styles.list_item}></li>
+					<li className={styles.list_item}></li>
+					<li className={styles.list_item}></li>
+				</ul>
 				<form className={styles.form_container} onSubmit={handleSubmit(onSubmit)}>
 					<div className={styles.info_container}>
 						<h2 className={styles.title}>Условия сотрудничества с HR</h2>
