@@ -15,7 +15,7 @@ function Result() {
 				{Object.entries(values).map(([key, value]) => (
 					<div className={styles.row} key={key}>
 						<span className={styles.key}>{key}: </span>
-						<p className={styles.value}>{`${value}, `}</p>
+						<p className={styles.value}>{`${value} - `}</p>
 					</div>
 				))}
 			</div>
