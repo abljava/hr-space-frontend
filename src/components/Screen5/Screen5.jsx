@@ -39,7 +39,7 @@ function Screen5() {
 
 	const handleClick = () => {
 		dispatch(setData(watchInputs));
-		navigate('/5');
+		navigate('/result');
 	};
 
 	return (
