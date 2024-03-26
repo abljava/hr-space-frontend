@@ -1,6 +1,6 @@
 import { useState, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useForm } from 'react-hook-form';
+import { useForm, Controller } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
 import { setData } from '../../slices/formSlice/formSlice';
 import * as yup from 'yup';
@@ -8,7 +8,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import cn from 'classnames';
 import styles from './Screen4.module.scss';
 
-import { TAGS, INFORMATION } from '../../utils/constants';
+import { TAGS, INFORMATION, AMOUNT } from '../../utils/constants';
 import Switcher from '../Switcher/Switcher';
 import polygon from '../../assets/images/polygon.svg';
 import icon from '../../assets/images/icon.svg';
@@ -23,16 +23,32 @@ function Screen4() {
 	const [tagsList, setTagsList] = useState([]);
 	const buttonBack = cn(styles.button, styles.button_back);
 	const labelClass = cn(styles.input_label, styles.narrow_label);
+	const buttonDisabled = cn(styles.button, styles.button_disabled);
 
-	const validation = yup.object().shape({});
+	const validation = yup.object().shape({
+		information: yup.array().of(yup.string()).min(1, 'Выберите хотя бы один фильтр'),
+		amount_recruiters: yup.string().required(),
+		amount_employee: yup.string().required(),
+		payment: yup.string().required(),
+	});
 
 	const {
 		register,
 		handleSubmit,
 		watch,
+		control,
 		formState: { errors, isValid },
 	} = useForm({
-		defaultValues: {},
+		defaultValues: {
+			amount_employee: '',
+			amount_recruiters: '',
+			start_date: '',
+			high_priority: false,
+			information: [],
+			payment: '',
+			recruiter_specs: '',
+			university_degree: false,
+		},
 		resolver: yupResolver(validation),
 	});
 
@@ -41,10 +57,6 @@ function Screen4() {
 	const toggleTooltip = () => {
 		setTooltipVisible(!tooltipVisible);
 		setImageVisible(!tooltipVisible);
-	};
-
-	const handleRecruiterSelection = recruiterNumber => {
-		setSelectedRecruiter(recruiterNumber);
 	};
 
 	const handleTagClick = tag => {
@@ -77,12 +89,12 @@ function Screen4() {
 	};
 
 	const onSubmit = dataSubmit => {
-		console.log('dataSubmit2', dataSubmit);
+		dispatch(setData(watchInputs));
 	};
 
 	const handleClick = () => {
 		navigate('/4');
-		dispatch(setData(watchInputs));
+		// dispatch(setData(watchInputs));
 	};
 
 	return (
@@ -94,7 +106,14 @@ function Screen4() {
 					<div className={styles.info_container}>
 						<h2 className={styles.title}>Условия сотрудничества с HR</h2>
 						<span className={styles.info__text}>Срочный статус заявки</span>
-						{/* <Switcher id="tooltip" /> */}
+
+						<Controller
+							control={control}
+							name="high_priority"
+							render={({ field: { onChange, name, value } }) => (
+								<Switcher onChange={onChange} checked={value} name={name} />
+							)}
+						/>
 						<div className={styles.tooltip_container}>
 							<img
 								src={icon}
@@ -119,31 +138,20 @@ function Screen4() {
 							<label htmlFor="recruiter" className={`${labelClass} ${styles.has_star}`}>
 								Кол-во рекрутеров
 							</label>
-							<div className={styles.button_container_recruiter}>
-								<button
-									type="button"
-									className={`${styles.button_btn} ${styles.button_recruiter}`}
-									onClick={() => handleRecruiterSelection(1)}
-									style={selectedRecruiter === 1 ? { backgroundColor: '#1785E5' } : null}
-								>
-									1
-								</button>
-								<button
-									type="button"
-									className={`${styles.button_btn} ${styles.button_recruiter}`}
-									onClick={() => handleRecruiterSelection(2)}
-									style={selectedRecruiter === 2 ? { backgroundColor: '#1785E5' } : null}
-								>
-									2
-								</button>
-								<button
-									type="button"
-									className={`${styles.button_btn} ${styles.button_recruiter}`}
-									onClick={() => handleRecruiterSelection(3)}
-									style={selectedRecruiter === 3 ? { backgroundColor: '#1785E5' } : null}
-								>
-									3
-								</button>
+							<div className={styles.radio_container}>
+								{AMOUNT.map(field => (
+									<div key={field.id} className={styles.radio_input}>
+										<input
+											type="radio"
+											className={styles.radio}
+											value={field.name}
+											{...register('amount_recruiters')}
+										/>
+										<p className={styles.radio_description}>{field.name}</p>
+
+										{errors.amount_recruiters && <span>{errors.amount_recruiters.message}</span>}
+									</div>
+								))}
 							</div>
 						</li>
 
@@ -157,8 +165,8 @@ function Screen4() {
 									id="recruiter_specs"
 									className={styles.textarea_item}
 									placeholder="Напишите ваши требования к рекрутеру"
-									ref={textareaRef}
-									onChange={handleTextareaChange}
+									// ref={textareaRef}
+									// onChange={handleTextareaChange}
 								/>
 								<div className={styles.tag_list}>
 									{TAGS.map((tag, index) => (
@@ -176,10 +184,16 @@ function Screen4() {
 							</div>
 						</li>
 						<li className={`${styles.input_container} ${styles.custom_input_container}`}>
-							<label htmlFor="higher_education" className={labelClass}>
+							<label htmlFor="university_degree" className={labelClass}>
 								Наличие высшего образования у рекрутера
 							</label>
-							{/* <Switcher id="higher_education" /> */}
+							<Controller
+								control={control}
+								name="university_degree"
+								render={({ field: { onChange, name, value } }) => (
+									<Switcher onChange={onChange} checked={value} name={name} />
+								)}
+							/>
 						</li>
 						<li className={`${styles.input_container} ${styles.custom_input_container}`}>
 							<label htmlFor="number " className={`${labelClass} ${styles.has_star}`}>
@@ -187,17 +201,17 @@ function Screen4() {
 							</label>
 							<div>
 								<input
-									{...register('amount', {
+									{...register('amount_employee', {
 										required: 'Обязательное поле',
 									})}
 									type="text"
-									id="amount"
+									id="amount_employee"
 									className={styles.input_item_container}
 									placeholder=""
 									onInput={handleInput}
 								/>
-								{errors?.amount && (
-									<p className={styles.error}>{errors?.amount?.message || 'error'}</p>
+								{errors?.amount_employee && (
+									<p className={styles.error}>{errors?.amount_employee?.message || 'error'}</p>
 								)}
 							</div>
 						</li>
@@ -224,14 +238,14 @@ function Screen4() {
 							</div>
 						</li>
 						<li className={`${styles.input_container} ${styles.custom_input_container}`}>
-							<label htmlFor="data" className={labelClass}>
+							<label htmlFor="start_date" className={labelClass}>
 								Ожидаемая дата выхода сотрудника
 							</label>
-							<div className={styles.input_wrapper} data-input="data">
+							<div className={styles.input_wrapper} data-input="start_date">
 								<input
-									{...register('data')}
-									type="text"
-									id="data"
+									{...register('start_date')}
+									type="date"
+									id="start_date"
 									className={styles.input_item}
 									placeholder="ДД.ММ.ГГГГ"
 								/>
@@ -265,7 +279,12 @@ function Screen4() {
 							<button className={buttonBack} onClick={() => navigate('/3')}>
 								Назад
 							</button>
-							<button className={styles.button} onClick={handleClick}>
+							<button
+								disabled={!isValid}
+								className={!isValid ? styles.button : buttonDisabled}
+								onClick={handleClick}
+								type="submit"
+							>
 								Далее
 							</button>
 						</>

@@ -356,3 +356,18 @@ export const BONUSES = [
 		text: 'Скидки в компании',
 	},
 ];
+
+export const AMOUNT = [
+	{
+		id: '1',
+		name: '1',
+	},
+	{
+		id: '2',
+		name: '2',
+	},
+	{
+		id: '3',
+		name: '3',
+	},
+];
