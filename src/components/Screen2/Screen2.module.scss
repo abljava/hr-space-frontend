@@ -20,8 +20,9 @@
 }
 
 .form_container {
-	margin-bottom: 177px;
-}
+	width: 931px;
+	display: grid;
+	margin-bottom: 177px;}
 
 .title {
 	font-size: 24px;
@@ -90,9 +91,9 @@
 }
 
 .button_container {
-	margin-left: 769px;
 	display: flex;
 	gap: 20px;
+	justify-self: end;
 }
 
 .button {

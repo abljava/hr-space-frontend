@@ -19,6 +19,9 @@
 }
 
 .form_container {
+	width: 931px;
+	display: grid;
+	margin-bottom: 177px;
 }
 
 .title {
@@ -101,10 +104,10 @@
 .button {
 	width: 119px;
 	height: 48px;
-	margin-left: 908px;
 	padding: 12px 36px;
 	background-color: rgba(235, 235, 235, 1);
 	border-radius: 8px;
+	justify-self: end;
 }
 
 .button_disabled {

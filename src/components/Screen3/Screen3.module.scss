@@ -19,6 +19,9 @@
 }
 
 .form_container {
+	width: 931px;
+	display: grid;
+	margin-bottom: 177px;
 }
 
 .title {
@@ -164,9 +167,9 @@
 }
 
 .button_container {
-	margin-left: 769px;
 	display: flex;
 	gap: 20px;
+	justify-self: end;
 }
 
 .button {
