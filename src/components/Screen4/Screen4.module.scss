@@ -11,10 +11,35 @@
 }
 
 .progress_bar {
-	width: 388px;
-	height: 8px;
-	background-color: rgba(185, 209, 255, 1);
+	margin: 0;
+	padding: 0;
 	margin-bottom: 80px;
+	list-style-type: none;
+	display: flex;
+	flex-direction: row;
+}
+.list_item{
+	margin-right: 4px;
+}
+.list_item:first-child {
+	background-color: rgba(185, 209, 255, 1);
+	width: 64px;
+	height: 8px;
+}
+.list_item:nth-child(2) {
+	background-color: rgba(185, 209, 255, 1);
+	width: 64px;
+	height: 8px;
+}
+.list_item:nth-child(3){
+	background-color: rgba(185, 209, 255, 1);
+	width: 64px;
+	height: 8px;
+}
+.list_item:nth-child(4){
+	background-color: rgba(185, 209, 255, 1);
+	width: 64px;
+	height: 8px;
 }
 .progress_bar_new {
 	margin-bottom: 60px;

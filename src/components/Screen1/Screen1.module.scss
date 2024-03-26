@@ -12,10 +12,18 @@
 }
 
 .progress_bar {
-	width: 388px;
-	height: 8px;
-	background-color: rgba(185, 209, 255, 1);
+	margin: 0;
+	padding: 0;
 	margin-bottom: 80px;
+	list-style-type: none;
+}
+.list_item{
+	margin-right: 4px;
+}
+.list_item:first-child {
+	background-color: rgba(185, 209, 255, 1);
+	width: 64px;
+	height: 8px;
 }
 
 .form_container {

@@ -52,7 +52,14 @@ function Screen5() {
 		<>
 			<section className={styles.container}>
 				<h1 className={styles.heading}>Новая заявка</h1>
-				<div className={styles.progress_bar}></div>
+				<ul className={`${styles.progress_bar} ${styles.progress_bar_new}`}>
+					<li className={styles.list_item}></li>
+					<li className={styles.list_item}></li>
+					<li className={styles.list_item}></li>
+					<li className={styles.list_item}></li>
+					<li className={styles.list_item}></li>
+					<li className={styles.list_item}></li>
+				</ul>
 				<form className={styles.form_container} onSubmit={handleSubmit(onSubmit)}>
 					<h2 className={`${styles.title} ${styles.second_title}`}>Способ оплаты</h2>
 					<div className={styles.container_payment}>
